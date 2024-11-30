@@ -1,0 +1,207 @@
+.navbar {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-div {
+  width: 80%;
+  height: 100%;
+}
+
+.upper-nav {
+  border: 1px solid #0000001A;
+  border-top: 0px;
+  background-color: #FAFAFA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.nav-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding-left: 20px;
+}
+
+.star {
+  width: 25px;
+  font-family: Poppins;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 37.5px;
+  text-align: left;
+}
+
+.discount-tagline {
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.promo-code {
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22.5px;
+  text-decoration-line: underline;
+  color: #FC8A06;
+  cursor: pointer;
+}
+
+.nav-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.address-image {
+  width: 25px;
+}
+
+.address-name {
+  font-family: Poppins;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.address-a4 {
+  text-decoration-line: underline;
+}
+
+.change-address {
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  color: #FC8A06;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+.nav-cart {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #028643;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.cart-block-I {
+  width: 200px;
+  height: 100%;
+  border-right: 1px solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.cart-img {
+  width: 43px;
+  height: 43px;
+}
+
+.cart-text {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.cart-block-II {
+  width: 100px;
+  height: 100%;
+  border-right: 1px solid #FFFFFF;
+}
+
+.cart-block-III {
+  width: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav-cart-arrow {
+  width: 38px;
+  height: 38px;
+  rotate: 90deg;
+}
+
+.down-nav {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.Logo-div {
+  width: 215px;
+}
+
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.nav-items {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 20px;
+}
+
+.nav-item-name {
+  height: 45px;
+  border-radius: 120px;
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0px 20px;
+}
+
+.nav-item-active {
+  background-color: #FC8A06;
+  color: white;
+}
+
+.auth-button {
+  height: 61px;
+  border-radius: 120px;
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #03081F;
+  border: none;
+  cursor: pointer;
+}
+
+.user-img {
+  width: 30.97px;
+}
+
+.auth-text {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+}

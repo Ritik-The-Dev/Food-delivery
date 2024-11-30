@@ -1,0 +1,133 @@
+.main-login {
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0px;
+}
+
+.login-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+.login-left-div {
+    width: 463px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-form-div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-logo-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-logo {
+    width: 215px;
+    height: 53px;
+}
+
+.login-welcome {
+    font-family: Poppins;
+    font-size: 36px;
+    font-weight: 600;
+    text-align: start;
+}
+
+.login-quote {
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.login-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.login-input {
+    width: 463px;
+    height: 48px;
+    border-radius: 100px;
+    border: 1px solid #00000066;
+    padding: 0px 20px;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.forget-text {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
+    color: #FC8A06;
+    text-align: right;
+    padding: 10px 0px;
+}
+
+.login-btn {
+    height: 52px;
+    text-align: center;
+    border-radius: 100px;
+    background-color: #FC8A06;
+    outline: none;
+    border: none;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+}
+
+.signup-text {
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+    margin-top: 20px;
+    font-weight: 400;
+}
+
+.signup-link {
+    cursor: pointer;
+    color: #FC8A06;
+}
+
+.login-right-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-div {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.login-big-image {
+    width: 30vw;
+    object-fit: cover;
+    height: 80vh;
+    border-radius: 20px;
+}

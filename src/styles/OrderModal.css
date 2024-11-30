@@ -1,0 +1,42 @@
+.order-modal {
+    width: 350px;
+    height: 100px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    z-index: 10;
+}
+
+.order-logo-modal {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    margin-bottom: 2px
+}
+
+.order-logo {
+    width: 58px;
+    height: 15px;
+}
+
+.order-tagline {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.order-desc {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.order-now{
+    font-family: Poppins;
+    font-size: 10px;
+    font-weight: 400;
+    color: #8B8B8B;
+}

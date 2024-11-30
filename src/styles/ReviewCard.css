@@ -1,0 +1,100 @@
+.review-card-component {
+    width: 496px;
+    height: 274px;
+    border-radius: 4px;
+    background-color: white;
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 20px 20px;
+}
+
+.review-card-upper {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.review-card-upper-left {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+}
+
+.review-profile-img {
+    width: 54px;
+    height: 54px;
+    border-radius: 100%;
+}
+
+.upper-left-details {
+    width: 140px;
+    border-left: 2px solid #FC8A06;
+    height: 60px;
+    display: flex;
+    align-items: start;
+    padding: 0px 10px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.review-card-name {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.review-card-location {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    color: #FC8A06
+}
+
+.review-card-upper-right {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+}
+
+.review-card-ratings {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.star-rating {
+    width: 16.98px;
+    height: 16.98px;
+    object-fit: cover;
+}
+
+.review-card-timing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.review-timing-clock {
+    width: 23px;
+    height: 23px;
+}
+
+.review-timing-date {
+    font-family: Poppins;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.review-card-bottom {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+}

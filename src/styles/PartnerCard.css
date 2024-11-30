@@ -1,0 +1,73 @@
+.partner-card-component {
+    width: 754px;
+    height: 425px;
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    background-size: cover;
+}
+
+.partner-card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(245.7deg, rgba(255, 255, 255, 0) 0.94%, rgba(3, 8, 31, 0.19) 51.68%, rgba(3, 8, 31, 0.89) 87.9%);
+    padding: 0px 0px 20px 0px;
+}
+
+.tagline-div {
+    display: flex;
+    padding-left: 10%;
+}
+
+.tagline-tab {
+    width: 288px;
+    height: 63px;
+    border-radius: 0px 0px 12px 12px;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.partner-type {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+    gap: 5px;
+}
+
+.partner-desc-type {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FC8A06;
+}
+
+.partner-desc-name {
+    font-family: Poppins;
+    font-size: 44px;
+    font-weight: 700;
+    color: white;
+}
+
+.get-started-btn {
+    width: 205px;
+    height: 52px;
+    border-radius: 120px;
+    color: white;
+    outline: none;
+    border: none;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #FC8A06;
+    cursor: pointer;
+}

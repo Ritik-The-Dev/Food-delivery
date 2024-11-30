@@ -1,0 +1,36 @@
+.category-card-comp {
+    width: 238px;
+    height: 266px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.category-comp-img {
+    width: 238px;
+    height: 203px;
+    object-fit: cover;
+}
+
+.category-comp-details {
+    padding: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #F5F5F5;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.category-comp-type {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.category-comp-quantity {
+    font-family: Poppins;
+    font-size: 13px;
+    font-weight: 400;
+    color: #FC8A06;
+}

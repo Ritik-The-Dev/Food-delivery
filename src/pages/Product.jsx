@@ -12,7 +12,29 @@ function Product() {
   const navigate = useNavigate();
   const location = useLocation();
   const [showCart, setShowCart] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState([
+    {
+      id: 1,
+      quantity: 1,
+      price: "120",
+      name: "Royal Cheese Burger",
+      desc: "With extra fries",
+    },
+    {
+      id: 2,
+      quantity: 1,
+      price: "120",
+      name: "Royal Cheese Burger",
+      desc: "With extra fries",
+    },
+    {
+      id: 3,
+      quantity: 1,
+      price: "120",
+      name: "Royal Cheese Burger",
+      desc: "With extra fries",
+    },
+  ]);
 
   const addItemToCart = (item) => {
     const newCart = [...cartItems, item];
@@ -24,7 +46,6 @@ function Product() {
       )}`
     );
   };
-
   const banners = [
     "Offers",
     "Burgers",
@@ -61,7 +82,7 @@ function Product() {
       name: "Free ice Cream Offer",
     },
   ];
-  const Popular = [
+  const SimilarRestraunts = [
     {
       id: 1,
       img: Images.Popular1,
@@ -251,6 +272,7 @@ function Product() {
         console.error("Error parsing cartItems from URL:", error);
       }
     }
+    console.log(cartState);
     setShowCart(cartState);
   }, [location]);
 
@@ -342,9 +364,10 @@ function Product() {
             <div
               className="discount-sections"
               style={{
-                gridTemplateColumns: showCart
-                  ? `repeat(2, 1fr)`
-                  : `repeat(3, 1fr)`,
+                gridTemplateColumns:
+                  showCart && showCart != "false"
+                    ? `repeat(2, 1fr)`
+                    : `repeat(3, 1fr)`,
               }}
             >
               {exclusiveDeals.map((e) => (
@@ -364,9 +387,10 @@ function Product() {
               <div
                 className="products-grid"
                 style={{
-                  gridTemplateColumns: showCart
-                    ? `repeat(2, 1fr)`
-                    : `repeat(3, 1fr)`,
+                  gridTemplateColumns:
+                    showCart && showCart != "false"
+                      ? `repeat(2, 1fr)`
+                      : `repeat(3, 1fr)`,
                 }}
               >
                 {Products.map((e) => (
@@ -385,9 +409,10 @@ function Product() {
               <div
                 className="products-grid"
                 style={{
-                  gridTemplateColumns: showCart
-                    ? `repeat(2, 1fr)`
-                    : `repeat(3, 1fr)`,
+                  gridTemplateColumns:
+                    showCart && showCart != "false"
+                      ? `repeat(2, 1fr)`
+                      : `repeat(3, 1fr)`,
                 }}
               >
                 {Products1.map((e) => (
@@ -406,9 +431,10 @@ function Product() {
               <div
                 className="products-grid"
                 style={{
-                  gridTemplateColumns: showCart
-                    ? `repeat(2, 1fr)`
-                    : `repeat(3, 1fr)`,
+                  gridTemplateColumns:
+                    showCart && showCart != "false"
+                      ? `repeat(2, 1fr)`
+                      : `repeat(3, 1fr)`,
                 }}
               >
                 {Products2.map((e) => (
@@ -423,7 +449,9 @@ function Product() {
               </div>
             </div>
           </div>
-          {showCart ? <CartComponent /> : undefined}
+          {showCart && showCart != "false" ? (
+            <CartComponent cartItems={cartItems} />
+          ) : undefined}
         </div>
         {/* Timing Div */}
         <div className="timing-div-info">
@@ -554,7 +582,7 @@ function Product() {
         <div className="Popular-sections">
           <span className="Popular-tagline">Similar Restaurants</span>
           <div className="Popular-cards-div">
-            {Popular.map((e) => (
+            {SimilarRestraunts.map((e) => (
               <PopularCard img={e.img} type={e.type} key={e.id} />
             ))}
           </div>

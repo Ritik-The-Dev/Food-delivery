@@ -56,12 +56,31 @@ import profilepic from "./profilepic.png";
 import star from "./star.png";
 import arrow from "./arrow.png";
 import basket from "./basket.png";
+import deletes from "./deletes.png";
+import scooter from "./scooter.png";
+import shop from "./shop.png";
+import arrowwhite from "./arrowwhite.png";
+import arrowRight from "./arrow-right.png";
+import leftarrow from "./leftarrow.png";
+import pin from "./pin.png";
+import wallet from "./wallet.png";
+import add1 from "./add1.png";
+import paymentIcon from "./paymentIcon.png";
+import card from "./card.png";
+import edit from "./edit.png";
 
 export const Images = {
+  edit,
+  card,
   Logo,
+  add1,
+  paymentIcon,
+  wallet,
+  pin,
   download,
   answer1,
   Location,
+  leftarrow,
   Location1,
   answer2,
   downloadBg,
@@ -116,4 +135,9 @@ export const Images = {
   star,
   arrow,
   basket,
+  deletes,
+  arrowRight,
+  scooter,
+  shop,
+  arrowwhite,
 };

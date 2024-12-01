@@ -1,0 +1,296 @@
+.payment-outer-div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.payment-inner-div {
+    width: 80%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.title-payment {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    font-family: Poppins;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.payment-upper-div {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    margin-bottom: 80px;
+}
+
+.left-arrow-order-details {
+    width: 39px;
+    height: 39px;
+    cursor: pointer;
+}
+
+.payment-items-div {
+    width: 921px;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.payment-price-div {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+
+.payment-total-prices {
+    border: 1px solid #202938;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    flex-direction: column;
+    padding: 20px 10px;
+    border-radius: 12px;
+}
+
+.subtotal-payment-price-span {
+    padding: 10px 0px;
+    border-bottom: 1px solid #202938;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 400;
+    color: #83858A;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    width: 536px;
+}
+
+.payment-address {
+    width: 100%;
+    border: 1px solid #FFE8CE;
+    border-radius: 56px;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.payment-address-card {
+    width: 100%;
+    border: 1px solid #FFE8CE;
+    border-radius: 56px;
+    height: 66px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.payment-adress-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 15px;
+}
+
+.payment-pin {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid #2D3748;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFE8CE;
+}
+
+.payment-pin-card {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFE8CE;
+}
+
+.payment-order-map-pin {
+    width: 20px;
+    height: 20px;
+}
+
+.payment-adress-details {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.payment-adress-title {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.payment-adress-main {
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.payment-right-arrow {
+    width: 16px;
+    height: 16px;
+    rotate: 180deg;
+    cursor: pointer;
+}
+
+.case-upper-img {
+    color: #FC8A06;
+    font-weight: 800;
+    font-family: Poppins;
+    rotate: 5deg;
+    font-size: 20px;
+}
+
+.all-payments-cards {
+    border-top: 1px solid #000000;
+    padding: 20px 0px;
+    margin-top: 20px;
+}
+
+.add-debit-card {
+    width: 20px;
+    height: 20px;
+}
+
+.payment-card-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1.5px solid #83858A;
+    appearance: none;
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.payment-card-checkbox:checked {
+    background-color: #FC8A06;
+    border-color: #FC8A06;
+}
+
+.payment-card-checkbox:checked::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.choose-payment-btns {
+    width: 536px;
+    height: 43px;
+    border-radius: 100px;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    margin-top: 10px;
+}
+
+.payment-complete-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.payment-completed-div {
+    width: 349px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.payment-complete-icon {
+    width: 195px;
+    height: 195px;
+}
+
+.order-placed-text {
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.order-confirmed-text {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    color: #83858A;
+    text-align: center;
+}
+
+.order-confirmed-items {
+    width: 346px;
+    height: 156px;
+    margin: 20px 0px;
+    border: 1px solid #00000080;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px 0px;
+    flex-direction: column;
+}
+
+.order-confirmed-items {
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    color: #03081F;
+}
+
+.backtohome {
+    width: 311px;
+    height: 39px;
+    background-color: #FC8A06;
+    border-radius: 100px;
+    text-align: center;
+    color: white;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}

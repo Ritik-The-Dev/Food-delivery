@@ -11,10 +11,10 @@ function Navbar() {
 
   const NavItems = [
     { id: 1, name: "Home", path: "/" },
-    { id: 2, name: "Browse Menu", path: "/browse-menu" },
-    { id: 3, name: "Special Offers", path: "/special-offers" },
+    { id: 2, name: "Browse Menu", path: "#" },
+    { id: 3, name: "Special Offers", path: "#" },
     { id: 4, name: "Restaurants", path: "/restaurants" },
-    { id: 5, name: "Track Order", path: "/track-order" },
+    { id: 5, name: "Track Order", path: "#" },
   ];
 
   useEffect(() => {
@@ -46,7 +46,10 @@ function Navbar() {
             <span className="change-address">Change Location</span>
           </div>
           <div className="nav-cart">
-            <div className="cart-block-I">
+            <div
+              onClick={() => navigate("/restaurants?cart=true")}
+              className="cart-block-I"
+            >
               <img className="cart-img" src={Images.Cart} alt="🛒" />
               <span className="cart-text">My Cart</span>
             </div>
@@ -83,7 +86,7 @@ function Navbar() {
                 {item.name}
               </span>
             ))}
-            <button className="auth-button">
+            <button className="auth-button" onClick={()=>navigate('/login')}>
               <img className="user-img" src={Images.User} alt="👤" />
               <span className="auth-text">Login/Signup</span>
             </button>

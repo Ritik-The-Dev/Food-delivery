@@ -34,3 +34,29 @@
     font-weight: 400;
     color: #FC8A06;
 }
+
+@media screen and (max-width:1250px) {
+    .category-card-comp {
+        width: 189px;
+        height: 211px;
+        align-items: center;
+    }
+
+    .category-comp-img{
+        object-fit: cover;
+    }
+
+    .category-comp-details{
+        height: 50px;
+        width: 100%;
+        padding: 01px 20px;
+    }
+
+    .category-comp-type{
+        text-wrap: nowrap;
+        font-size: 13px;
+    }
+    .category-comp-quantity{
+        font-size: 13px;
+    }
+}

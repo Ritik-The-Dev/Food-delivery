@@ -71,3 +71,44 @@
     background-color: #FC8A06;
     cursor: pointer;
 }
+
+@media screen and (max-width:1250px) {
+    .partner-card-component {
+        width: 391px;
+        height: 223px;
+    }
+
+    .tagline-div {
+        width: 220px;
+        height: 33px;
+    }
+
+    .tagline-tab {
+        font-size: 13px;
+    }
+
+    .partner-desc-type {
+        font-size: 16px;
+    }
+
+    .tagline-tab {
+        height: 33px;
+        text-wrap: nowrap;
+        font-size: 13px;
+        padding: 0px 10px;
+    }
+
+    .partner-card-inner {
+        justify-content: space-between;
+    }
+
+    .partner-desc-name {
+        font-size: 24px;
+    }
+
+    .get-started-btn {
+        width: 106.31px;
+        height: 26.97px;
+        font-size: 11px;
+    }
+}

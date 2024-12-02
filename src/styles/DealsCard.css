@@ -7,6 +7,9 @@
     position: relative;
 }
 
+.deals-type-inner-res{
+    display: none;
+}
 .deals-card-inner {
     display: flex;
     flex-direction: column;
@@ -87,4 +90,54 @@
 .add-btn {
     width: 49px;
     height: 49px;
+}
+
+@media screen and (max-width:1500px) {
+
+    .deals-type-inner {
+        width: 116px;
+        height: 56px;
+        display: none;
+    }
+
+    .deal-type {
+        font-size: 13px;
+    }
+
+    .deal-name {
+        font-size: 14px;
+        color: #03081F;
+    }
+
+    .deals-type {
+        align-items: start;
+        padding: 0px;
+    }
+
+    .discount-tab {
+        width: 46px;
+        font-size: 15px;
+        height: 38px;
+    }
+
+    .deals-type-inner-res {
+        width: 100%;
+        display: flex;
+        max-width: 120px;
+        flex-direction: column;
+    }
+
+    .deals-card-component-main {
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        flex-direction: column;
+        flex: 0 0 auto;
+        gap: 5px;
+    }
+
+    .deals-card-component {
+        width: 150px;
+        height: 150px;
+    }
 }

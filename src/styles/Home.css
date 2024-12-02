@@ -8,6 +8,14 @@
     margin-bottom: 40px;
 }
 
+.download-background1 {
+    display: none;
+}
+
+.pincode-res-search-btn {
+    display: none;
+}
+
 .home-width-manager {
     width: 80vw;
 }
@@ -622,6 +630,321 @@
 
 @media screen and (max-width:1400px) {
     .home-width-manager {
-        width: 98zvw;
+        width: 98vw;
+    }
+}
+
+@media screen and (max-width:1250px) {
+    .home-banner-center {
+        display: none;
+    }
+
+    .home-banner-right {
+        display: none;
+    }
+
+    .home-banner-div {
+        justify-content: center;
+        padding: 40px 10px;
+        background-color: #03081F;
+        color: white;
+    }
+
+    .home-banner-left {
+        margin-bottom: 20px;
+        align-items: center;
+        padding: 0px;
+    }
+
+    .banner-headline {
+        font-size: 34px;
+    }
+
+    .banner-headline-color {
+        font-size: 34px;
+    }
+
+    .banner-tagline {
+        font-size: 12px;
+    }
+
+    .postcode-div-main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .postcode-text {
+        font-size: 13px;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+
+    .postcode-input {
+        background-color: white;
+        height: 57px;
+        width: 293px;
+    }
+
+    .pincode-search-btn {
+        display: none;
+    }
+
+    .pincode-res-search-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 57px;
+        height: 57px;
+        border-radius: 100%;
+        background-color: #FC8A06;
+        rotate: 180deg;
+        position: absolute;
+        right: 10%;
+        border: none;
+        cursor: pointer;
+    }
+
+    .pincode-res-search-btn img {
+        width: 34px;
+        height: 34px;
+    }
+
+    .deal-tagline {
+        font-size: 16px;
+        text-wrap: wrap;
+        text-align: center;
+        width: 60%;
+    }
+
+    .deals-map {
+        flex-direction: column;
+    }
+
+    .deals-name {
+        display: none;
+        width: 132px;
+        height: 38px;
+        padding: 0px;
+        font-family: Poppins;
+        font-size: 10px;
+        font-weight: 400;
+    }
+
+    .deals-name-active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #03081F;
+        color: #03081F
+    }
+
+    .deals-head {
+        padding: 0px 5px;
+        gap: 10px;
+    }
+
+    .deals-section {
+        height: 100%;
+        margin-bottom: 40px;
+    }
+
+    .deals-cards {
+        gap: 10px;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        overflow-x: auto;
+        align-items: start;
+        justify-content: start;
+        /* scroll-snap-type: x mandatory; */
+    }
+
+    .category-section {
+        margin-top: 0px;
+        height: 100%;
+        align-items: center;
+    }
+
+    .category-tagline {
+        font-size: 16px;
+    }
+
+    .categories-cards-div {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        height: 100%;
+        gap: 10px;
+        place-items: center;
+    }
+
+    .Popular-section {
+        margin-top: 20px;
+        padding: 10px 10px;
+        align-items: start;
+        justify-content: start;
+        height: 100%;
+    }
+
+    .Popular-tagline {
+        font-size: 16px !important;
+    }
+
+    .Popular-cards-div {
+        overflow-x: auto;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .download-section {
+        height: 100%;
+        width: 100%;
+        align-items: start;
+        justify-content: start;
+        padding: 0px;
+    }
+
+    .download-section-inner {
+        flex-direction: column;
+        margin-top: 0px;
+        width: 100%;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 100%;
+    }
+
+    .download-background {
+        width: 322px;
+        height: 253px;
+    }
+
+    .download-section-right {
+        width: 90%;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .download-logo-center {
+        width: 110px;
+        height: 27px;
+    }
+
+    .download-logo-left {
+        font-size: 32px;
+    }
+
+    .personalised-text {
+        height: 100%;
+        font-size: 24px;
+        color: #03081F;
+        background-color: transparent;
+    }
+
+    .download-text {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .download-background {
+        display: none;
+    }
+
+    .download-background1 {
+        display: flex;
+        width: 322px;
+        height: 353px;
+        margin-top: 20px;
+    }
+
+    .downloadBg0 {
+        height: 350px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .downloadBg1 {
+        height: 350px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .download-section {
+        height: 100%;
+    }
+
+
+    .partner-section {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .know-more-inner-section {
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .know-more-tagline {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .know-more-tabs {
+        display: none;
+    }
+
+    .know-more-main {
+        flex-direction: column;
+        background-color: transparent;
+        height: 100%;
+        margin-top: 10px;
+        padding: 0px;
+    }
+
+    .know-more-questions {
+        width: 100%;
+    }
+
+    .know-more-span {
+        max-width: 100%;
+        padding: 20px 0px;
+        text-align: center;
+    }
+
+    .know-more-answers-div{
+        height: 100%;
+        background-color: #03081F;
+        padding: 40px 10px;
+        margin-top: 20px;
+        border-radius: 20px;;
+        width: 100%;
+    }
+
+    .know-more-answers{
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 20px;;
+
+    }
+
+    .answer-div-main{
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+    }
+    .total-orders-section{
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        gap: 20px;
+        padding: 20px 10px;
+        border-bottom: 1px solid white ;
     }
 }

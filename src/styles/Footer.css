@@ -220,3 +220,68 @@
 .footer-lower-links{
     cursor: pointer;
 }
+
+
+@media screen and (max-width:1250px) {
+    .footer-upper-left{
+        flex-direction: column;
+    }
+    .footer-upper-div{
+        flex-direction: column;
+            height: 100%;
+    }
+    .footer-upperleft-details{
+        width: 100%;
+        font: 15px;
+        text-align: center;
+    }
+    .footer-mail-div{
+        width: 374px;
+    }
+    .footer-upper-left{
+        align-items: center;
+    }
+    .footer-right-blockI {
+        align-items: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .footer-right-blocks {
+        width: 90%;
+        align-items: center;
+    }
+    .footer-div{
+        width: 95%;
+    }
+    .footer-mail-input{
+        width: 200px;
+    }
+    .footer-mail-btn{
+        width: 170px;
+    }
+    .footer-upper-left {
+        padding-right: 0;}
+    .footer-div{
+        height: 100%;
+        padding: 20px 0px;
+    }
+    .footer-upper-right{
+        flex-direction: column;
+        height: 100%;
+    }
+    .footer-lower-div{
+        height: 100%;
+    }
+    .footer-lower-inner-div{
+        flex-direction: column;
+        margin-top: 10px;
+    }
+    .footer-lower-right-div{
+        flex-direction: column;
+        padding: 10px 0px;
+        margin-top: 10px;
+    }
+    .footer-right-blocks{
+        margin-top: 10px;
+    }
+}

@@ -187,7 +187,7 @@ function Home() {
             </span>
             <span className="banner-headline">Feast Your Senses,</span>
             <span className="banner-headline-color">Fast and Fresh </span>
-            <div>
+            <div className="postcode-div-main">
               <label className="postcode-text" htmlFor="PostCode">
                 Enter a postcode to see what we deliver
               </label>
@@ -199,6 +199,9 @@ function Home() {
                   className="postcode-input"
                 />
                 <button className="pincode-search-btn">Search</button>
+                <button className="pincode-res-search-btn">
+                  <img src={Images.arrow} alt="" />
+                </button>
               </div>
             </div>
           </div>
@@ -344,6 +347,18 @@ function Home() {
                 </div>
               </div>
             </div>
+            <div className="download-background1">
+              <img
+                src={Images.downloadBg}
+                alt="Background"
+                className="downloadBg0"
+              />
+              <img
+                src={Images.download}
+                alt="Background"
+                className="downloadBg1"
+              />
+            </div>
           </div>
         </div>
         {/* Partner Section */}
@@ -420,7 +435,10 @@ function Home() {
               key={e._id}
               className="site-specs"
               style={{
-                borderRight: id !== 3 ? "1px solid white" : "none",
+                borderRight:
+                  id !== 3
+                    ? window.innerWidth > 1250 && "1px solid white"
+                    : "none",
               }}
             >
               <span className="site-specs-number">{e.number}</span>

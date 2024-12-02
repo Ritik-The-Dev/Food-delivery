@@ -2,11 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/PopularCard.css";
 
-function PopularCard({ img, type }) {
+function PopularCard({ img, type, id }) {
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate("/restaurants")}
+      onClick={() => {
+        id ? navigate(`/restaurants/${id}`) : "";
+      }}
       className={`${
         type === "Texas Chicken" ? "border-2" : ""
       } popular-card-comp`}

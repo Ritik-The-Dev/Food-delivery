@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .profile-inner-div {
@@ -52,6 +53,19 @@
     border-radius: 7.49px;
     cursor: pointer;
     background-color: #FC8A06;
+    color: white;
+    border: none;
+    font-family: Poppins;
+    font-size: 14.98px;
+    font-weight: 400;
+}
+
+.save-btn {
+    height: 41.19px;
+    border-radius: 7.49px;
+    cursor: pointer;
+    background-color: #FC8A06;
+    padding: 0px 20px;
     color: white;
     border: none;
     font-family: Poppins;

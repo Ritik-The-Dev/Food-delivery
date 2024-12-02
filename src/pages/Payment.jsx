@@ -2,22 +2,58 @@ import React, { useState } from "react";
 import { Images } from "../asests";
 import { useNavigate } from "react-router-dom";
 import "../styles/Payment.css";
+import axios from "axios";
+import { PLACE_ORDER } from "../api";
+import toast from "react-hot-toast";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { sharedCart, userData } from "../recoil/recoil";
 
-function Payment() {
+function Payment({ setCurrentPage, orderItems, subTotal }) {
+  const setUserData = useSetRecoilState(userData);
   const [paymentPage, setPaymentPage] = useState(false);
   const [paymentOption, setPaymentOption] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const SharedCart = useRecoilValue(sharedCart);
 
   const AllPaymentCards = [
-    { id: 1, name: "MaestroKard" },
-    { id: 2, name: "Paypol" },
-    { id: 3, name: "Strike" },
+    { _id: 1, name: "MaestroKard" },
+    { _id: 2, name: "Paypol" },
+    { _id: 3, name: "Strike" },
   ];
 
   const handlePaymentSelect = (paymentName) => {
     setPaymentOption(paymentName);
   };
 
+  const placeOrder = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      const { data } = await axios.put(
+        PLACE_ORDER,
+        {
+          totalPrice: subTotal + 10,
+          type: SharedCart ? "shared" : "",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (data.result) {
+        setPaymentPage(paymentOption ? true : false);
+      } else {
+        throw new Error("Failed to Complete Payment.");
+      }
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message || "Something went wrong. Try again!"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="payment-outer-div">
       {paymentPage ? (
@@ -30,12 +66,24 @@ function Payment() {
               chosen delights!
             </span>
             <div className="order-confirmed-items">
-              {["Royal Cheese Burger", "Potato Veggies", "Coke Coca Cola"].map(
-                (e) => (
-                  <span>{e}</span>
-                )
-              )}
-              <button className="backtohome" onClick={() => navigate("/")}>
+              {orderItems.map((e, index) => (
+                <span className="order-confirmed-items-span" key={index}>
+                  {e.name}
+                </span>
+              ))}
+              <button
+                className="backtohome"
+                onClick={() => {
+                  navigate("/");
+                  setUserData((prev) => ({
+                    ...prev,
+                    cart: [],
+                  }));
+                  if (SharedCart) {
+                    window.location.reload();
+                  }
+                }}
+              >
                 Back to Home
               </button>
             </div>
@@ -47,7 +95,7 @@ function Payment() {
             <img
               src={Images.leftarrow}
               className="left-arrow-order-details"
-              onClick={() => navigate("/checkout")}
+              onClick={() => setCurrentPage("checkout")}
               alt="Back"
             />
             <span>Choose and pay</span>
@@ -86,7 +134,7 @@ function Payment() {
               <div className="all-payments-cards">
                 {AllPaymentCards.map((e) => (
                   <div
-                    key={e.id}
+                    key={e._id}
                     className={`payment-address-card ${
                       paymentOption === e.name ? "selected" : ""
                     }`}
@@ -110,10 +158,7 @@ function Payment() {
                   </div>
                 ))}
               </div>
-              <div
-                className="payment-address-card"
-                onClick={() => navigate("/profile")}
-              >
+              <div className="payment-address-card">
                 <div className="payment-adress-left">
                   <img
                     src={Images.add1}
@@ -130,10 +175,10 @@ function Payment() {
               <div className="payment-total-prices">
                 <div className="subtotal-payment-price-span">
                   <span className="sub-total-item">Amount to be paid</span>
-                  <span className="sub-total-price">₹240</span>
+                  <span className="sub-total-price">₹{subTotal}</span>
                 </div>
                 <button
-                  onClick={() => setPaymentPage(paymentOption ? true : false)}
+                  onClick={loading ? undefined : placeOrder}
                   className="choose-payment-btns"
                   style={{
                     backgroundColor: paymentOption ? "#FC8A06" : "gray",

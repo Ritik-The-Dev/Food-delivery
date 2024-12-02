@@ -6,41 +6,44 @@ import DealsCard from "../components/DealsCard";
 import CategoryCard from "../components/CategoryCard";
 import PopularCard from "../components/PopularCard";
 import PartnerCard from "../components/PartnerCard";
+import { useRecoilValue } from "recoil";
+import { restaurants } from "../recoil/recoil";
 
 function Home() {
+  const Restraunts = useRecoilValue(restaurants);
   const [currentDeal, setCurrentDeal] = useState("Pizza & Fast food");
 
   const siteSpecs = [
-    { id: 1, name: "Registered Riders", number: "546+" },
-    { id: 2, name: "Orders Delivered", number: "789,900+" },
-    { id: 3, name: "Restaurants Partnered", number: "690+" },
-    { id: 4, name: "Food items", number: "17,457+" },
+    { _id: 1, name: "Registered Riders", number: "546+" },
+    { _id: 2, name: "Orders Delivered", number: "789,900+" },
+    { _id: 3, name: "Restaurants Partnered", number: "690+" },
+    { _id: 4, name: "Food items", number: "17,457+" },
   ];
 
   const dealsSection = [
-    { id: 1, name: "Vegan" },
-    { id: 2, name: "Shushi" },
-    { id: 3, name: "Pizza & Fast food" },
-    { id: 4, name: "Others" },
+    { _id: 1, name: "Vegan" },
+    { _id: 2, name: "Shushi" },
+    { _id: 3, name: "Pizza & Fast food" },
+    { _id: 4, name: "Others" },
   ];
 
   const exclusiveDeals = [
     {
-      id: 1,
+      _id: 1,
       img: Images.Deal1,
       discount: "-40%",
       type: "Restaurant",
       name: "Chef Burgers London",
     },
     {
-      id: 2,
+      _id: 2,
       img: Images.Deal2,
       discount: "-20%",
       type: "Restaurant",
       name: "Grand Ai Cafe London",
     },
     {
-      id: 3,
+      _id: 3,
       img: Images.Deal1,
       discount: "-17%",
       type: "Restaurant",
@@ -50,37 +53,37 @@ function Home() {
 
   const categories = [
     {
-      id: 1,
+      _id: 1,
       img: Images.Category1,
       type: "Burgers & Fast food",
       quantity: "21 Restaurants",
     },
     {
-      id: 2,
+      _id: 2,
       img: Images.Category2,
       type: "Salads",
       quantity: "32 Restaurants",
     },
     {
-      id: 3,
+      _id: 3,
       img: Images.Category3,
       type: "Pasta & Casuals",
       quantity: "4 Restaurants",
     },
     {
-      id: 4,
+      _id: 4,
       img: Images.Category4,
       type: "Pizza",
       quantity: "32 Restaurants",
     },
     {
-      id: 5,
+      _id: 5,
       img: Images.Category5,
       type: "Breakfast",
       quantity: "4 Restaurants",
     },
     {
-      id: 6,
+      _id: 6,
       img: Images.Category6,
       type: "Soups",
       quantity: "32 Restaurants",
@@ -89,32 +92,32 @@ function Home() {
 
   const Popular = [
     {
-      id: 1,
+      _id: 1,
       img: Images.Popular1,
       type: "McDonald’s London ",
     },
     {
-      id: 2,
+      _id: 2,
       img: Images.Popular2,
       type: "Papa Johns",
     },
     {
-      id: 3,
+      _id: 3,
       img: Images.Popular3,
       type: "KFC West London",
     },
     {
-      id: 4,
+      _id: 4,
       img: Images.Popular4,
       type: "Texas Chicken",
     },
     {
-      id: 5,
+      _id: 5,
       img: Images.Popular5,
       type: "Burger King",
     },
     {
-      id: 6,
+      _id: 6,
       img: Images.Popular6,
       type: "Shaurma 1",
     },
@@ -122,14 +125,14 @@ function Home() {
 
   const Partner = [
     {
-      id: 1,
+      _id: 1,
       img: Images.partner1,
       tagline: "Earn more with lower fees",
       type: "Signup as a business",
       name: "Partner with us",
     },
     {
-      id: 2,
+      _id: 2,
       img: Images.partner2,
       tagline: "Avail exclusive perks",
       type: "Signup as a rider",
@@ -154,19 +157,19 @@ function Home() {
 
   const knowMoreAnswers = [
     {
-      id: 1,
+      _id: 1,
       tagline: "Place an Order!",
       img: Images.answer1,
       desc: "Place order through our website or Mobile app",
     },
     {
-      id: 2,
+      _id: 2,
       tagline: "Track Progress",
       img: Images.answer2,
       desc: "Your can track your order status with delivery time",
     },
     {
-      id: 3,
+      _id: 3,
       tagline: "Get your Order!",
       img: Images.answer3,
       desc: "Receive your order at a lighting fast speed!",
@@ -248,7 +251,7 @@ function Home() {
                   className={`deals-name ${
                     currentDeal === e.name ? "deals-name-active" : ""
                   }`}
-                  key={e.id}
+                  key={e._id}
                 >
                   {e.name}
                 </span>
@@ -260,7 +263,7 @@ function Home() {
               <DealsCard
                 img={e.img}
                 discount={e.discount}
-                key={e.id}
+                key={e._id}
                 type={e.type}
                 name={e.name}
               />
@@ -278,7 +281,7 @@ function Home() {
                 img={e.img}
                 quantity={e.quantity}
                 type={e.type}
-                key={e.id}
+                key={e._id}
               />
             ))}
           </div>
@@ -287,8 +290,8 @@ function Home() {
         <div className="Popular-section">
           <span className="Popular-tagline">Popular Restaurants</span>
           <div className="Popular-cards-div">
-            {Popular.map((e) => (
-              <PopularCard img={e.img} type={e.type} key={e.id} />
+            {Restraunts.map((e) => (
+              <PopularCard id={e._id} img={e.logo} type={e.name} key={e._id} />
             ))}
           </div>
         </div>
@@ -351,7 +354,7 @@ function Home() {
               name={e.name}
               tagline={e.tagline}
               type={e.type}
-              key={e.id}
+              key={e._id}
             />
           ))}
         </div>
@@ -389,7 +392,7 @@ function Home() {
               <div className="know-more-answers-div">
                 <div className="know-more-answers">
                   {knowMoreAnswers.map((e) => (
-                    <div key={e.id} className="know-answer-div">
+                    <div key={e._id} className="know-answer-div">
                       <span className="know-answer-tagline">{e.tagline}</span>
                       <img
                         src={e.img}
@@ -412,11 +415,14 @@ function Home() {
         </div>
         {/* Total Orders Section */}
         <div className="total-orders-section">
-          {siteSpecs.map((e,id) => (
-            <div key={e.id} className="site-specs"
-            style={{
-              borderRight: id !== 3 ? '1px solid white' : 'none'
-            }}>
+          {siteSpecs.map((e, id) => (
+            <div
+              key={e._id}
+              className="site-specs"
+              style={{
+                borderRight: id !== 3 ? "1px solid white" : "none",
+              }}
+            >
               <span className="site-specs-number">{e.number}</span>
               <span className="site-specs-names">{e.name}</span>
             </div>

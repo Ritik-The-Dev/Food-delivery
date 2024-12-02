@@ -262,7 +262,6 @@
 
 .order-confirmed-items {
     width: 346px;
-    height: 156px;
     margin: 20px 0px;
     border: 1px solid #00000080;
     border-radius: 12px;
@@ -270,16 +269,18 @@
     align-items: center;
     justify-content: space-around;
     padding: 10px 0px;
-    flex-direction: column;
-}
-
-.order-confirmed-items {
     font-family: Poppins;
     font-size: 14px;
     font-weight: 400;
     color: #03081F;
+    flex-direction: column;
+    overflow-y: auto;
+    gap: 10px;
 }
 
+.order-confirmed-items-span{
+    height: 21px;
+}
 .backtohome {
     width: 311px;
     height: 39px;

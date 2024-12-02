@@ -69,6 +69,7 @@
     align-items: start;
     justify-content: start;
     flex-direction: column;
+    max-width: 180px;
 
 }
 

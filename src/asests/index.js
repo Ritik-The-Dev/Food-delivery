@@ -67,10 +67,14 @@ import wallet from "./wallet.png";
 import add1 from "./add1.png";
 import paymentIcon from "./paymentIcon.png";
 import card from "./card.png";
+import share from "./share.png";
 import edit from "./edit.png";
+import navbar from "./navbar.png";
 
 export const Images = {
   edit,
+  navbar,
+  share,
   card,
   Logo,
   add1,

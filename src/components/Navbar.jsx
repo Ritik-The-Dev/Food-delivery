@@ -2,19 +2,23 @@ import React, { useEffect, useState } from "react";
 import "../styles/Navbar.css";
 import { Images } from "../asests";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { userData } from "../recoil/recoil";
+import toast from "react-hot-toast";
 
 function Navbar() {
+  const UserData = useRecoilValue(userData);
   const navigate = useNavigate();
   const location = useLocation();
 
   const [activeTabName, setActiveTabName] = useState("Home");
 
   const NavItems = [
-    { id: 1, name: "Home", path: "/" },
-    { id: 2, name: "Browse Menu", path: "#" },
-    { id: 3, name: "Special Offers", path: "#" },
-    { id: 4, name: "Restaurants", path: "/restaurants" },
-    { id: 5, name: "Track Order", path: "#" },
+    { _id: 1, name: "Home", path: "/" },
+    { _id: 2, name: "Browse Menu", path: "#" },
+    { _id: 3, name: "Special Offers", path: "#" },
+    { _id: 4, name: "Restaurants", path: "/restaurants" },
+    { _id: 5, name: "Track Order", path: "#" },
   ];
 
   useEffect(() => {
@@ -47,7 +51,17 @@ function Navbar() {
           </div>
           <div className="nav-cart">
             <div
-              onClick={() => navigate("/restaurants?cart=true")}
+              onClick={() => {
+                if (location.pathname.startsWith("/restaurants")) {
+                  if (location.search.includes("cart=true")) {
+                    navigate(location.pathname);
+                  } else {
+                    navigate(`${location.pathname}?cart=true`);
+                  }
+                } else {
+                  navigate("/restaurants/674d7208a54b5e7e77c0c127?cart=true");
+                }
+              }}
               className="cart-block-I"
             >
               <img className="cart-img" src={Images.Cart} alt="🛒" />
@@ -78,7 +92,7 @@ function Navbar() {
                 className={`nav-item-name ${
                   activeTabName === item.name ? "nav-item-active" : ""
                 }`}
-                key={item.id}
+                key={item._id}
                 onClick={() => {
                   navigate(`${item.path}`);
                 }}
@@ -86,10 +100,24 @@ function Navbar() {
                 {item.name}
               </span>
             ))}
-            <button className="auth-button" onClick={()=>navigate('/login')}>
+            <button
+              className="auth-button"
+              onClick={() =>
+                UserData && UserData.username
+                  ? navigate("/profile")
+                  : navigate("/login")
+              }
+            >
               <img className="user-img" src={Images.User} alt="👤" />
-              <span className="auth-text">Login/Signup</span>
+              <span className="auth-text">
+                {UserData && UserData.username
+                  ? UserData.username
+                  : "Login/Signup"}
+              </span>
             </button>
+          </div>
+          <div className="menu-icon">
+            <img src={Images.navbar} className="menu-icon-hamburger" />
           </div>
         </div>
       </div>

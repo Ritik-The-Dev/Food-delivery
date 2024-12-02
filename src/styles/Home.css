@@ -12,7 +12,6 @@
     width: 80vw;
 }
 
-/* home-banner-div Css*/
 .home-banner-div {
     display: flex;
     align-items: center;
@@ -613,4 +612,16 @@
     font-family: Poppins;
     font-size: 24px;
     font-weight: 700;
+}
+
+@media screen and (max-width:1700px) {
+    .home-width-manager {
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width:1400px) {
+    .home-width-manager {
+        width: 98zvw;
+    }
 }

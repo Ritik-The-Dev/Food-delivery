@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Images } from "../asests";
 import DealsCard from "../components/DealsCard";
 import PopularCard from "../components/PopularCard";
@@ -7,225 +7,245 @@ import "../styles/Product.css";
 import ProductsCard from "../components/ProductsCard";
 import ReviewCard from "../components/ReviewCard";
 import CartComponent from "../components/CartComponent";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { CartItems, restaurants, sharedCart, userData } from "../recoil/recoil";
+import toast from "react-hot-toast";
+import Loader from "../components/Loader";
 
 function Product() {
+  const { id } = useParams();
   const navigate = useNavigate();
+  const Restaurants = useRecoilValue(restaurants);
+  const UserData = useRecoilValue(userData);
   const location = useLocation();
+  const [RestaurantData, setRestrauntData] = useState({
+    _id: "674d71f2509b07f0897ea65a",
+    name: "McDonald’s East London",
+    logo: Images.productBanner,
+    categories: [
+      {
+        name: "Offers",
+        foodItems: [],
+        _id: "674d71f2509b07f0897ea65b",
+      },
+      {
+        name: "Burgers",
+        foodItems: [
+          {
+            name: "Royal Cheese Burger with extra Fries",
+            description:
+              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+            price: 120,
+            image:
+              "https://res.cloudinary.com/dw4gtg42m/image/upload/v1733127893/product1_okuyrz.png",
+            _id: "674d71f2509b07f0897ea65d",
+          },
+          {
+            name: "Royal Cheese Burger with extra Fries",
+            description:
+              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+            price: 120,
+            image:
+              "https://res.cloudinary.com/dw4gtg42m/image/upload/v1733127893/product1_okuyrz.png",
+            _id: "674d71f2509b07f0897ea65e",
+          },
+          {
+            name: "Royal Cheese Burger with extra Fries",
+            description:
+              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+            price: 120,
+            image:
+              "https://res.cloudinary.com/dw4gtg42m/image/upload/v1733127893/product1_okuyrz.png",
+            _id: "674d71f2509b07f0897ea65f",
+          },
+          {
+            name: "Royal Cheese Burger with extra Fries",
+            description:
+              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+            price: 120,
+            image:
+              "https://res.cloudinary.com/dw4gtg42m/image/upload/v1733127893/product1_okuyrz.png",
+            _id: "674d71f2509b07f0897ea660",
+          },
+        ],
+        _id: "674d71f2509b07f0897ea65c",
+      },
+      {
+        name: "Fries",
+        foodItems: [
+          {
+            name: "Royal Cheese Burger with extra Fries",
+            description:
+              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+            price: 70,
+            image:
+              "https://res.cloudinary.com/dw4gtg42m/image/upload/v1733127975/product2_bq3fe1.png",
+            _id: "674d71f2509b07f0897ea662",
+          },
+          {
+            name: "Royal Cheese Burger with extra Fries",
+            description:
+              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+            price: 70,
+            image:
+              "https://res.cloudinary.com/dw4gtg42m/image/upload/v1733127975/product2_bq3fe1.png",
+            _id: "674d71f2509b07f0897ea663",
+          },
+          {
+            name: "Royal Cheese Burger with extra Fries",
+            description:
+              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+            price: 70,
+            image:
+              "https://res.cloudinary.com/dw4gtg42m/image/upload/v1733127975/product2_bq3fe1.png",
+            _id: "674d71f2509b07f0897ea664",
+          },
+          {
+            name: "Royal Cheese Burger with extra Fries",
+            description:
+              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+            price: 70,
+            image:
+              "https://res.cloudinary.com/dw4gtg42m/image/upload/v1733127975/product2_bq3fe1.png",
+            _id: "674d71f2509b07f0897ea665",
+          },
+        ],
+        _id: "674d71f2509b07f0897ea661",
+      },
+      {
+        name: "Snacks",
+        foodItems: [],
+        _id: "674d71f2509b07f0897ea666",
+      },
+      {
+        name: "Salads",
+        foodItems: [],
+        _id: "674d71f2509b07f0897ea667",
+      },
+      {
+        name: "Cold Drinks",
+        foodItems: [
+          {
+            name: "Royal Cheese Burger with extra Fries",
+            description:
+              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+            price: 40,
+            image:
+              "https://res.cloudinary.com/dw4gtg42m/image/upload/v1733127979/product3_kpxwq4.png",
+            _id: "674d71f2509b07f0897ea669",
+          },
+          {
+            name: "Royal Cheese Burger with extra Fries",
+            description:
+              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+            price: 40,
+            image:
+              "https://res.cloudinary.com/dw4gtg42m/image/upload/v1733127979/product3_kpxwq4.png",
+            _id: "674d71f2509b07f0897ea66a",
+          },
+          {
+            name: "Royal Cheese Burger with extra Fries",
+            description:
+              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+            price: 40,
+            image:
+              "https://res.cloudinary.com/dw4gtg42m/image/upload/v1733127979/product3_kpxwq4.png",
+            _id: "674d71f2509b07f0897ea66b",
+          },
+          {
+            name: "Royal Cheese Burger with extra Fries",
+            description:
+              "1 McChicken™, 1 Big Mac™, 1 Royal Cheeseburger, 3 medium",
+            price: 40,
+            image:
+              "https://res.cloudinary.com/dw4gtg42m/image/upload/v1733127979/product3_kpxwq4.png",
+            _id: "674d71f2509b07f0897ea66c",
+          },
+        ],
+        _id: "674d71f2509b07f0897ea668",
+      },
+      {
+        name: "Happy Meal®",
+        foodItems: [],
+        _id: "674d71f2509b07f0897ea66d",
+      },
+      {
+        name: "Desserts",
+        foodItems: [],
+        _id: "674d71f2509b07f0897ea66e",
+      },
+      {
+        name: "Hot drinks",
+        foodItems: [],
+        _id: "674d71f2509b07f0897ea66f",
+      },
+      {
+        name: "Sauces",
+        foodItems: [],
+        _id: "674d71f2509b07f0897ea670",
+      },
+      {
+        name: "Orbit®",
+        foodItems: [],
+        _id: "674d71f2509b07f0897ea671",
+      },
+    ],
+    address: "Shaurma 1 East London",
+    phone: "9999999999",
+    rating: 5,
+    __v: 0,
+  });
+  const [CategoryWithProducts, setCategoryWithProducts] = useState([]);
   const [showCart, setShowCart] = useState(false);
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      quantity: 1,
-      price: "120",
-      name: "Royal Cheese Burger",
-      desc: "With extra fries",
-    },
-    {
-      id: 2,
-      quantity: 1,
-      price: "120",
-      name: "Royal Cheese Burger",
-      desc: "With extra fries",
-    },
-    {
-      id: 3,
-      quantity: 1,
-      price: "120",
-      name: "Royal Cheese Burger",
-      desc: "With extra fries",
-    },
-  ]);
+  const [cartItems, setCartItems] = useRecoilState(CartItems);
+  const [sharedItem, setSharedItem] = useRecoilState(sharedCart);
+  const [sharedLoading, setSharedLoading] = useState(false);
 
-  const addItemToCart = (item) => {
-    const newCart = [...cartItems, item];
-    setCartItems(newCart);
-    const cartIds = newCart.map((item) => item.id);
-    navigate(
-      `/restaurants?cart=true&cartItems=${encodeURIComponent(
-        JSON.stringify(cartIds)
-      )}`
-    );
-  };
-  const banners = [
-    "Offers",
-    "Burgers",
-    "Fries",
-    "Snacks",
-    "Salads",
-    "Cold drinks",
-    "Happy Meal®",
-    "Desserts",
-    "Hot drinks",
-    "Sauces",
-    "Orbit®",
-  ];
   const exclusiveDeals = [
     {
-      id: 1,
+      _id: 1,
       img: Images.discount1,
       discount: "-20%",
       type: "McDonald’s East London",
       name: "First Order Discount",
     },
     {
-      id: 2,
+      _id: 2,
       img: Images.discount2,
       discount: "-20%",
       type: "McDonald’s East London",
       name: "Vegan Discount",
     },
     {
-      id: 3,
+      _id: 3,
       img: Images.discount3,
       discount: "-100%",
       type: "McDonald’s East London",
       name: "Free ice Cream Offer",
     },
   ];
-  const SimilarRestraunts = [
-    {
-      id: 1,
-      img: Images.Popular1,
-      type: "McDonald’s London ",
-    },
-    {
-      id: 2,
-      img: Images.Popular2,
-      type: "Papa Johns",
-    },
-    {
-      id: 3,
-      img: Images.Popular3,
-      type: "KFC West London",
-    },
-    {
-      id: 4,
-      img: Images.Popular4,
-      type: "Texas Chicken",
-    },
-    {
-      id: 5,
-      img: Images.Popular5,
-      type: "Burger King",
-    },
-    {
-      id: 6,
-      img: Images.Popular6,
-      type: "Shaurma 1",
-    },
-  ];
-  const Products = [
-    {
-      id: 1,
-      title: "Royal Cheese Burger with extra Fries",
-      desc: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium",
-      price: "₹ 120",
-      img: Images.product1,
-    },
-    {
-      id: 2,
-      title: "The classics for 3",
-      desc: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium",
-      price: "₹ 120",
-      img: Images.product1,
-    },
-    {
-      id: 3,
-      title: "The classics for 3",
-      desc: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium",
-      price: "₹ 120",
-      img: Images.product1,
-    },
-    {
-      id: 4,
-      title: "The classics for 3",
-      desc: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium",
-      price: "₹ 120",
-      img: Images.product1,
-    },
-  ];
-  const Products1 = [
-    {
-      id: 1,
-      title: "Royal Cheese Burger with extra Fries",
-      desc: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium",
-      price: "₹ 70",
-      img: Images.product2,
-    },
-    {
-      id: 2,
-      title: "The classics for 3",
-      desc: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium",
-      price: "₹ 70",
-      img: Images.product2,
-    },
-    {
-      id: 3,
-      title: "The classics for 3",
-      desc: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium",
-      price: "₹ 70",
-      img: Images.product2,
-    },
-    {
-      id: 4,
-      title: "The classics for 3",
-      desc: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium",
-      price: "₹ 70",
-      img: Images.product2,
-    },
-  ];
-  const Products2 = [
-    {
-      id: 1,
-      title: "Royal Cheese Burger with extra Fries",
-      desc: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium",
-      price: "₹ 40",
-      img: Images.product3,
-    },
-    {
-      id: 2,
-      title: "The classics for 3",
-      desc: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium",
-      price: "₹ 40",
-      img: Images.product3,
-    },
-    {
-      id: 3,
-      title: "The classics for 3",
-      desc: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium",
-      price: "₹ 40",
-      img: Images.product3,
-    },
-    {
-      id: 4,
-      title: "The classics for 3",
-      desc: "1 McChicken™, 1 Big Mac™,  1 Royal Cheeseburger, 3 medium",
-      price: "₹ 40",
-      img: Images.product3,
-    },
-  ];
   const deliveryInfo = [
-    { id: 1, day: "Monday: ", timing: " 12:00 AM–3:00 AM, 8:00 AM–3:00 AM" },
-    { id: 2, day: "Tuesday: ", timing: "8:00 AM–3:00 AM" },
-    { id: 3, day: "Wednesday: ", timing: "8:00 AM–3:00 AM" },
-    { id: 4, day: "Thursday: ", timing: "8:00 AM–3:00 AM" },
-    { id: 5, day: "Friday: ", timing: "8:00 AM–3:00 AM" },
-    { id: 6, day: "Saturday: ", timing: "8:00 AM–3:00 AM" },
-    { id: 7, day: "Sunday: ", timing: "8:00 AM–12:00 AM" },
-    { id: 8, day: "Estimated time until delivery:", timing: "20 min" },
+    { _id: 1, day: "Monday: ", timing: " 12:00 AM–3:00 AM, 8:00 AM–3:00 AM" },
+    { _id: 2, day: "Tuesday: ", timing: "8:00 AM–3:00 AM" },
+    { _id: 3, day: "Wednesday: ", timing: "8:00 AM–3:00 AM" },
+    { _id: 4, day: "Thursday: ", timing: "8:00 AM–3:00 AM" },
+    { _id: 5, day: "Friday: ", timing: "8:00 AM–3:00 AM" },
+    { _id: 6, day: "Saturday: ", timing: "8:00 AM–3:00 AM" },
+    { _id: 7, day: "Sunday: ", timing: "8:00 AM–12:00 AM" },
+    { _id: 8, day: "Estimated time until delivery:", timing: "20 min" },
   ];
   const operationalTime = [
-    { id: 1, day: "Monday: ", timing: " 8:00 AM–3:00 AM, " },
-    { id: 2, day: "Tuesday: ", timing: "8:00 AM–3:00 AM" },
-    { id: 3, day: "Wednesday: ", timing: "8:00 AM–3:00 AM" },
-    { id: 4, day: "Thursday: ", timing: "8:00 AM–3:00 AM" },
-    { id: 5, day: "Friday: ", timing: "8:00 AM–3:00 AM" },
-    { id: 6, day: "Saturday: ", timing: "8:00 AM–3:00 AM" },
-    { id: 7, day: "Sunday: ", timing: "8:00 AM–3:00 AM" },
+    { _id: 1, day: "Monday: ", timing: " 8:00 AM–3:00 AM, " },
+    { _id: 2, day: "Tuesday: ", timing: "8:00 AM–3:00 AM" },
+    { _id: 3, day: "Wednesday: ", timing: "8:00 AM–3:00 AM" },
+    { _id: 4, day: "Thursday: ", timing: "8:00 AM–3:00 AM" },
+    { _id: 5, day: "Friday: ", timing: "8:00 AM–3:00 AM" },
+    { _id: 6, day: "Saturday: ", timing: "8:00 AM–3:00 AM" },
+    { _id: 7, day: "Sunday: ", timing: "8:00 AM–3:00 AM" },
   ];
   const review = [
     {
-      id: 1,
+      _id: 1,
       img: Images.profilepic,
       name: "St Glx",
       location: "South London",
@@ -235,7 +255,7 @@ function Product() {
         "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
     },
     {
-      id: 2,
+      _id: 2,
       img: Images.profilepic,
       name: "St Glx",
       location: "South London",
@@ -245,7 +265,7 @@ function Product() {
         "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
     },
     {
-      id: 3,
+      _id: 3,
       img: Images.profilepic,
       name: "St Glx",
       location: "South London",
@@ -255,6 +275,40 @@ function Product() {
         "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
     },
   ];
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const cartState = queryParams.get("sharelink");
+    if (cartState) {
+      try {
+        const decodedCartState = decodeURIComponent(cartState);
+        const parsedCartItems = JSON.parse(decodedCartState);
+        if (Array.isArray(parsedCartItems) && parsedCartItems.length) {
+          setSharedLoading(true);
+          setSharedItem(true);
+          const sharedCardItems = [];
+          parsedCartItems.forEach((item) => {
+            sharedCardItems.push({
+              _id: Date.now(),
+              quantity: 1,
+              foodItemId: item,
+            });
+          });
+          setCartItems(sharedCardItems);
+          setTimeout(() => {
+            navigate("/checkout");
+            setSharedLoading(false);
+          }, 2000);
+          setShowCart(true);
+        } else {
+          console.warn("No valid cart items found.");
+        }
+      } catch (error) {
+        setSharedLoading(false);
+        console.error("Error parsing cartItems from URL:", error);
+      }
+    }
+  }, [location, UserData]);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -272,9 +326,67 @@ function Product() {
         console.error("Error parsing cartItems from URL:", error);
       }
     }
-    console.log(cartState);
     setShowCart(cartState);
   }, [location]);
+
+  useEffect(() => {
+    if (!sharedItem) {
+      if (UserData._id) {
+        setCartItems(UserData.cart);
+      } else {
+        const cartItems = localStorage.getItem("cart");
+        if (cartItems && JSON.parse(cartItems)) {
+          setCartItems(JSON.parse(cartItems));
+        }
+      }
+    }
+  }, [UserData, Restaurants]);
+
+  useEffect(() => {
+    if (id && Restaurants) {
+      const getRestrauntData = Restaurants.find((e) => e._id === id);
+      if (getRestrauntData && getRestrauntData._id) {
+        setRestrauntData(getRestrauntData);
+        const AllCategoryWithProduct = [];
+        getRestrauntData.categories.forEach((e) => {
+          if (e.foodItems.length) {
+            AllCategoryWithProduct.push(e);
+          }
+        });
+        setCategoryWithProducts(AllCategoryWithProduct);
+      }
+    }
+  }, [id, Restaurants]);
+
+  const ReloadLocalItems = () => {
+    const cartItems = localStorage.getItem("cart");
+    if (cartItems && JSON.parse(cartItems)) {
+      setCartItems(JSON.parse(cartItems));
+    }
+  };
+
+  const copyShareLink = () => {
+    if (cartItems.length > 0) {
+      const generateShareUrl = (itemIds) => {
+        const encodedItemIds = encodeURIComponent(JSON.stringify(itemIds));
+        const shareUrl = `${window.location.origin}/restaurants/674d7208a54b5e7e77c0c157?sharelink=${encodedItemIds}`;
+        return shareUrl;
+      };
+      const ShareItemsIds = cartItems.map((item) => item.foodItemId);
+      const ShareUrl = generateShareUrl(ShareItemsIds);
+      navigator.clipboard
+        .writeText(ShareUrl)
+        .then(() => {
+          toast.success("Link copied to clipboard!");
+        })
+        .catch((err) => {
+          console.error("Failed to copy text to clipboard: ", err);
+          toast.error("Failed to copy link.");
+        });
+    } else {
+      toast.error("No items in your cart to share.");
+    }
+  };
 
   return (
     <div className="product-main-div">
@@ -290,7 +402,7 @@ function Product() {
             <div className="product-banner-left-div">
               <span className="product-banner-left-title">I'm lovin' it!</span>
               <span className="product-banner-left-headline">
-                McDonald’s East London
+                {RestaurantData.name}
               </span>
               <div className="product-banner-left-btns">
                 <button className="product-banner-left-btns1">
@@ -309,7 +421,7 @@ function Product() {
             </div>
             <div className="product-banner-right-div">
               <img
-                src={Images.productBanner}
+                src={RestaurantData.logo}
                 alt="Banner Img"
                 className="product-banner-right-img"
               />
@@ -331,7 +443,7 @@ function Product() {
         {/* Search Div */}
         <div className="search-div">
           <span className="search-text-label">
-            All Offers from McDonald’s East London
+            All Offers from {RestaurantData.name}
           </span>
           <div className="search-input-div">
             <img src={Images.search} alt="Search" className="search-img" />
@@ -345,14 +457,14 @@ function Product() {
         {/* Marquee Banner */}
         <div className="banner-marquee">
           <div className="banner-inner-marquee">
-            {banners.map((e, index) => (
+            {RestaurantData.categories.map((e, index) => (
               <span
                 className={`banner-marquee-span ${
                   index === 0 ? "banner-marquee-span-active" : ""
                 }`}
                 key={index}
               >
-                {e}
+                {e.name}
               </span>
             ))}
           </div>
@@ -375,82 +487,67 @@ function Product() {
                   name={e.name}
                   type={e.type}
                   discount={e.discount}
-                  key={e.id}
+                  key={e._id}
                   img={e.img}
                   productPage={true}
                 />
               ))}
             </div>
             {/* Products Section */}
-            <div className="product-section">
-              <span className="product-title">Burgers</span>
-              <div
-                className="products-grid"
-                style={{
-                  gridTemplateColumns:
-                    showCart && showCart != "false"
-                      ? `repeat(2, 1fr)`
-                      : `repeat(3, 1fr)`,
-                }}
-              >
-                {Products.map((e) => (
-                  <ProductsCard
-                    key={e.id}
-                    title={e.title}
-                    desc={e.desc}
-                    price={e.price}
-                    img={e.img}
-                  />
-                ))}
+            {CategoryWithProducts.map((e, index) => (
+              <div className="product-section" key={e._id}>
+                <span
+                  className={`${
+                    index === 0 ? "product-title" : "product-colored-title"
+                  }`}
+                >
+                  {e.name}
+                </span>
+                <div
+                  className="products-grid"
+                  style={{
+                    gridTemplateColumns:
+                      showCart && showCart != "false"
+                        ? `repeat(2, 1fr)`
+                        : `repeat(3, 1fr)`,
+                  }}
+                >
+                  {e.foodItems.map((e) => (
+                    <ProductsCard
+                      ReloadLocalItems={ReloadLocalItems}
+                      _id={e._id}
+                      key={e._id}
+                      title={e.name}
+                      desc={e.description}
+                      price={e.price}
+                      img={e.image}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="product-section">
-              <span className="product-colored-title">Fries</span>
-              <div
-                className="products-grid"
-                style={{
-                  gridTemplateColumns:
-                    showCart && showCart != "false"
-                      ? `repeat(2, 1fr)`
-                      : `repeat(3, 1fr)`,
-                }}
-              >
-                {Products1.map((e) => (
-                  <ProductsCard
-                    key={e.id}
-                    title={e.title}
-                    desc={e.desc}
-                    price={e.price}
-                    img={e.img}
-                  />
-                ))}
-              </div>
-            </div>
-            <div className="product-section">
-              <span className="product-colored-title">Cold Drinks</span>
-              <div
-                className="products-grid"
-                style={{
-                  gridTemplateColumns:
-                    showCart && showCart != "false"
-                      ? `repeat(2, 1fr)`
-                      : `repeat(3, 1fr)`,
-                }}
-              >
-                {Products2.map((e) => (
-                  <ProductsCard
-                    key={e.id}
-                    title={e.title}
-                    desc={e.desc}
-                    price={e.price}
-                    img={e.img}
-                  />
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
           {showCart && showCart != "false" ? (
-            <CartComponent cartItems={cartItems} />
+            <div className="both-comp">
+              <div className="share-cart-component">
+                <div className="share-cart-left">
+                  <img className="share-cart-img" src={Images.share} />
+                  <span className="share-cart-text">
+                    Share this cart with your friends
+                  </span>
+                </div>
+                <div className="share-cart-right">
+                  <button className="share-cart-btn" onClick={copyShareLink}>
+                    Copy Link
+                  </button>
+                </div>
+              </div>
+              <CartComponent
+                shared={sharedItem}
+                ReloadLocalItems={ReloadLocalItems}
+                cartItems={cartItems}
+              />
+            </div>
           ) : undefined}
         </div>
         {/* Timing Div */}
@@ -462,7 +559,7 @@ function Product() {
             </div>
             <div className="delivery-timings-div">
               {deliveryInfo.map((e) => (
-                <span className="delivery-timings" key={e.id}>
+                <span className="delivery-timings" key={e._id}>
                   <span className="delivery-day">{e.day}</span>
                   {e.timing}
                 </span>
@@ -494,7 +591,7 @@ function Product() {
             </div>
             <div className="operational-timings-div">
               {operationalTime.map((e) => (
-                <span className="delivery-timings" key={e.id}>
+                <span className="delivery-timings" key={e._id}>
                   <span className="delivery-day">{e.day}</span>
                   {e.timing}
                 </span>
@@ -570,7 +667,7 @@ function Product() {
                   name={e.name}
                   rating={e.ratings}
                   date={e.date}
-                  key={e.id}
+                  key={e._id}
                   comment={e.comment}
                 />
               ))}
@@ -582,12 +679,13 @@ function Product() {
         <div className="Popular-sections">
           <span className="Popular-tagline">Similar Restaurants</span>
           <div className="Popular-cards-div">
-            {SimilarRestraunts.map((e) => (
-              <PopularCard img={e.img} type={e.type} key={e.id} />
+            {Restaurants.map((e) => (
+              <PopularCard img={e.logo} type={e.name} key={e._id} />
             ))}
           </div>
         </div>
       </div>
+      {sharedLoading ? <Loader text="Getting Shared Card Items" /> : undefined}
     </div>
   );
 }

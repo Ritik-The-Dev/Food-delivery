@@ -1,17 +1,18 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.jsx'
-import {Provider} from 'react-redux'
-import store from './redux/store.js'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import { RecoilRoot } from "recoil";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Provider store={store}>
-    <Router>
-    <App />
-    </Router>
-    </Provider>
-  </StrictMode>,
-)
+    <RecoilRoot>
+      <Router>
+        <App />
+        <Toaster />
+      </Router>
+    </RecoilRoot>
+  </StrictMode>
+);

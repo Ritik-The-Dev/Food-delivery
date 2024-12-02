@@ -4,10 +4,10 @@ import "../styles/Footer.css";
 
 function Footer() {
   const SocialIcons = [
-    { id: 1, img: Images.Facebook, name: "Facebook" },
-    { id: 2, img: Images.Instagram, name: "Instagram" },
-    { id: 3, img: Images.Tiktok, name: "Tiktok" },
-    { id: 4, img: Images.Snapchat, name: "Snapchat" },
+    { _id: 1, img: Images.Facebook, name: "Facebook" },
+    { _id: 2, img: Images.Instagram, name: "Instagram" },
+    { _id: 3, img: Images.Tiktok, name: "Tiktok" },
+    { _id: 4, img: Images.Snapchat, name: "Snapchat" },
   ];
 
   const LegalPages = [

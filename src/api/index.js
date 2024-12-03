@@ -1,5 +1,5 @@
-// const HOST = `https://food-api-cuvette.vercel.app`;
-const HOST = `http://localhost:999`;
+const HOST = `https://food-api-cuvette.vercel.app`;
+// const HOST = `http://localhost:999`;
 
 export const REGISTER_API = `${HOST}/api/v1/register`;
 export const LOGIN_API = `${HOST}/api/v1/login`;

@@ -22,6 +22,32 @@ function Product() {
   const sectionRefs = useRef([]);
   const cartRef = useRef(null);
   const productsRef = useRef(null);
+  const reviewsRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScrollLeft = () => {
+    if (reviewsRef.current) {
+      const scrollAmount = reviewsRef.current.offsetWidth;
+      const newScrollPosition = Math.max(scrollPosition - scrollAmount, 0);
+      reviewsRef.current.scrollTo({
+        left: newScrollPosition,
+        behavior: "smooth",
+      });
+      setScrollPosition(newScrollPosition);
+    }
+  };
+
+  const handleScrollRight = () => {
+    if (reviewsRef.current) {
+      const scrollAmount = reviewsRef.current.offsetWidth;
+      const newScrollPosition = scrollPosition + scrollAmount;
+      reviewsRef.current.scrollTo({
+        left: newScrollPosition,
+        behavior: "smooth",
+      });
+      setScrollPosition(newScrollPosition);
+    }
+  };
   const [ShowModalCart, setShowModalCart] = useRecoilState(showModalCart);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -279,6 +305,16 @@ function Product() {
     },
     {
       _id: 3,
+      img: Images.profilepic,
+      name: "St Glx",
+      location: "South London",
+      ratings: 5,
+      date: "24th September, 2023",
+      comment:
+        "The positive aspect was undoubtedly the efficiency of the service. The queue moved quickly, the staff was friendly, and the food was up to the usual McDonald's standard – hot and satisfying.",
+    },
+    {
+      _id: 4,
       img: Images.profilepic,
       name: "St Glx",
       location: "South London",
@@ -786,15 +822,15 @@ function Product() {
           <div className="product-review-section-inner">
             <div className="review-section-name">
               <span className="review-section-span-name">Customer Reviews</span>
-              <div className="move-reviews-btns">
-                <div className="review-btn">
+              <div className="move-reviews-btns no-res-btn">
+                <div className="review-btn" onClick={handleScrollLeft}>
                   <img
                     src={Images.arrow}
                     alt="<"
                     className="left-arrow-img-rating"
                   />
                 </div>
-                <div className="review-btn">
+                <div className="review-btn" onClick={handleScrollRight}>
                   <img
                     src={Images.arrow}
                     alt=">"
@@ -802,8 +838,12 @@ function Product() {
                   />
                 </div>
               </div>
+              <img
+                src={Images.rating}
+                className="rating-img-overall show-res-img"
+              />
             </div>
-            <div className="reviews-section">
+            <div className="reviews-section" ref={reviewsRef}>
               {review.map((e) => (
                 <ReviewCard
                   img={e.img}
@@ -815,6 +855,24 @@ function Product() {
                   comment={e.comment}
                 />
               ))}
+            </div>
+            <div className="review-btn-responsive-use">
+              <div className="move-reviews-btns">
+                <div className="review-btn" onClick={handleScrollLeft}>
+                  <img
+                    src={Images.arrow}
+                    alt="<"
+                    className="left-arrow-img-rating"
+                  />
+                </div>
+                <div className="review-btn" onClick={handleScrollRight}>
+                  <img
+                    src={Images.arrow}
+                    alt=">"
+                    className="right-arrow-img-rating"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>

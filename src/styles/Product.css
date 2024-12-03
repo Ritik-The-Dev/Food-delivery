@@ -648,12 +648,14 @@
 
 .reviews-section {
     margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
     gap: 20px;
     align-items: start;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
 }
 
 .rating-img-overall {
@@ -742,6 +744,14 @@
 }
 
 .Popular-sections-res {
+    display: none;
+}
+
+.show-res-img {
+    display: none;
+}
+
+.review-btn-responsive-use {
     display: none;
 }
 
@@ -932,6 +942,28 @@
 }
 
 @media screen and (max-width:900px) {
+    .no-res-btn {
+        display: none;
+    }
+
+    .review-btn-responsive-use {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .rating-img-overall {
+        display: none;
+    }
+
+    .show-res-img {
+        display: flex;
+        width: 67.04px;
+        height: 78px;
+        margin-top: 0;
+    }
+
     .res-banner-left-div {
         width: 100%;
     }
@@ -1068,7 +1100,8 @@
     .share-cart-component {
         width: 100%;
     }
-    .share-cart-img{
+
+    .share-cart-img {
         display: none;
     }
 }

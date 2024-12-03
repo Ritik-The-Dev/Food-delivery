@@ -85,7 +85,11 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
-      <Footer />
+      {(window.innerWidth >= 900 ||
+        (window.innerWidth < 900 &&
+          location.pathname !== "/checkout" &&
+          location.pathname !== "/profile")) && <Footer />}
+
       {loading ? <Loader text={"Loading Website Content...."} /> : undefined}
     </>
   );

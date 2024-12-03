@@ -265,3 +265,43 @@
     color: white;
     width: 80%;
 }
+
+
+@media screen and (max-width:450px) {
+    .cart-component-main {
+        width: 100%;
+    }
+
+    .cart-items-div {
+        width: 100%;
+    }
+
+    .cart-item-map {
+        width: 100%;
+    }
+
+    .cart-item-details {
+        width: 100%;
+    }
+
+    .total-span {
+        font-size: 14px;
+    }
+
+    .total-price {
+        font-size: 20px;
+    }
+
+    .extra-cart-item {
+        width: 100%;
+        gap: 10px;
+    }
+
+    .home-delivery {
+        width: 100%;
+    }
+
+    .checkoutBtn {
+        width: 90%;
+    }
+}

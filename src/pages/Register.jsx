@@ -11,23 +11,31 @@ function Register() {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [gender, setGender] = useState("");
+  const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [address, setAddress] = useState("");
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (!name || !email || !password || !address || !gender) {
+    if (!name || !email || !password || !number) {
       return toast.error("Please fill all the fields");
     }
+    const phoneRegex = /^[0-9]{10}$/;
+
+    if (!phoneRegex.test(number)) {
+      return toast.error("Please enter a valid 10-digit phone number");
+    }
+
+    if (password.length <= 8) {
+      return toast.error("Password should be greater than 8 characters");
+    }
+
     try {
       setLoading(true);
       await axios.post(REGISTER_API, {
         username: name,
         email,
         password,
-        address,
-        gender,
+        number,
       });
 
       toast.success("Registration Successful!");
@@ -55,7 +63,7 @@ function Register() {
             <img src={Images.Logo} alt="Order.Uk" className="login-logo" />
           </div>
           <div className="login-form-div">
-            <span className="login-welcome">Welcome to Order.Uk 👋</span>
+            <span className="login-welcome">Welcome 👋</span>
             <span className="login-quote">
               Today is a new day. It's your day. You shape it. Sign Up to start
               ordering.
@@ -66,14 +74,33 @@ function Register() {
             >
               <div className="form-div">
                 <label className="label" htmlFor="Name">
-                  UserName
+                  Name
                 </label>
                 <input
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   name="Name"
                   type="text"
-                  placeholder="Username"
+                  placeholder="eg. John A"
+                  className="login-input"
+                  required
+                />
+              </div>
+              <div className="form-div">
+                <label className="label" htmlFor="Number">
+                  Phone Number
+                </label>
+                <input
+                  value={number}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (value.length <= 10) {
+                      setNumber(value);
+                    }
+                  }}
+                  name="Number"
+                  type="number"
+                  placeholder="Enter your 10 digit mobile number"
                   className="login-input"
                   required
                 />
@@ -93,20 +120,6 @@ function Register() {
                 />
               </div>
               <div className="form-div">
-                <label className="label" htmlFor="Gender">
-                  Gender
-                </label>
-                <input
-                  value={gender}
-                  onChange={(e) => setGender(e.target.value)}
-                  name="Gender"
-                  type="text"
-                  placeholder="Male"
-                  className="login-input"
-                  required
-                />
-              </div>
-              <div className="form-div">
                 <label className="label" htmlFor="Password">
                   Password
                 </label>
@@ -118,20 +131,6 @@ function Register() {
                   type="password"
                   placeholder="At least 8 characters"
                   className="login-input"
-                />
-              </div>
-              <div className="form-div">
-                <label className="label" htmlFor="Address">
-                  Address
-                </label>
-                <input
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                  name="Address"
-                  type="text"
-                  placeholder="Your Address"
-                  className="login-input"
-                  required
                 />
               </div>
               <button

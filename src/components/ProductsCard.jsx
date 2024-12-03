@@ -111,13 +111,11 @@ function ProductsCard({ _id: id, title, desc, price, img, ReloadLocalItems }) {
       </div>
       <div className="product-card-img">
         <img src={img} alt="product" className="product-comp-image" />
-        <div className="right-banner-product">
-          <img
-            src={Images.add}
-            alt="Add to cart"
-            className="add-btn"
-            onClick={loading ? undefined : addItemToCart}
-          />
+        <div
+          className="right-banner-product"
+          onClick={loading ? undefined : addItemToCart}
+        >
+          <img src={Images.add} alt="Add to cart" className="add-btn" />
         </div>
       </div>
     </div>

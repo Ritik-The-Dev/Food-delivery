@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import "../styles/Navbar.css";
 import { Images } from "../asests";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { userData } from "../recoil/recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { showModalCart, userData } from "../recoil/recoil";
 import toast from "react-hot-toast";
 
 function Navbar() {
+  const setShowModalCart = useSetRecoilState(showModalCart);
   const UserData = useRecoilValue(userData);
   const navigate = useNavigate();
   const location = useLocation();
@@ -121,6 +122,45 @@ function Navbar() {
           </div>
         </div>
       </div>
+      {/* Responsive Items */}
+      {(window.innerWidth >= 900 ||
+        (window.innerWidth < 900 &&
+          location.pathname !== "/checkout" &&
+          location.pathname !== "/profile")) && (
+        <div className="res-items">
+          <div
+            className="res-btn-1"
+            onClick={() => navigate(UserData?._id ? "/profile" : "/login")}
+          >
+            <img className="cart-img" src={Images.profilepic} alt="👦" />
+            <span className="cart-text">
+              {UserData?._id ? UserData?.username : "Login/SignUp"}
+            </span>
+          </div>
+          <div
+            className="res-btn-2"
+            onClick={() => {
+              setShowModalCart(true);
+              navigate("/restaurants/674d7208a54b5e7e77c0c127?cart=true");
+            }}
+          >
+            <img className="cart-img" src={Images.Cart} alt="🛒" />
+            <span className="cart-text">My Cart</span>
+          </div>
+        </div>
+      )}
+
+      {(window.innerWidth >= 900 ||
+        (window.innerWidth < 900 &&
+          location.pathname !== "/checkout" &&
+          location.pathname !== "/profile")) && (
+        <div className="res-address">
+          <img className="address-image" src={Images.Location} alt="📍" />
+          <span className="address-name">
+            Regent Street, <span className="address-a4">A4,</span> A4201, London
+          </span>
+        </div>
+      )}
     </nav>
   );
 }

@@ -439,6 +439,10 @@ function Home() {
                   id !== 3
                     ? window.innerWidth > 1250 && "1px solid white"
                     : "none",
+                borderTop:
+                  id !== 0
+                    ? window.innerWidth < 1250 && "1px solid white"
+                    : "none",
               }}
             >
               <span className="site-specs-number">{e.number}</span>

@@ -614,6 +614,7 @@
     font-family: Poppins;
     font-size: 64px;
     font-weight: 300;
+    overflow: hidden;
 }
 
 .site-specs-names {
@@ -622,11 +623,18 @@
     font-weight: 700;
 }
 
-@media screen and (max-width:1700px) {
+@media screen and (max-width:1800px) {
     .home-width-manager {
         width: 90vw;
     }
 }
+
+@media screen and (max-width:1670px) {
+    .home-width-manager {
+        width: 98vw;
+    }
+}
+
 
 @media screen and (max-width:1400px) {
     .home-width-manager {
@@ -637,6 +645,11 @@
 @media screen and (max-width:1250px) {
     .home-banner-center {
         display: none;
+    }
+
+    .postcode-div {
+        overflow: hidden;
+
     }
 
     .home-banner-right {
@@ -761,7 +774,7 @@
         display: flex;
         overflow-x: auto;
         align-items: start;
-        justify-content: start;
+        justify-content: space-around;
         /* scroll-snap-type: x mandatory; */
     }
 
@@ -777,7 +790,7 @@
 
     .categories-cards-div {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         height: 100%;
         gap: 10px;
         place-items: center;
@@ -916,35 +929,48 @@
         text-align: center;
     }
 
-    .know-more-answers-div{
+    .know-more-answers-div {
         height: 100%;
         background-color: #03081F;
         padding: 40px 10px;
         margin-top: 20px;
-        border-radius: 20px;;
+        border-radius: 20px;
+        ;
         width: 100%;
     }
 
-    .know-more-answers{
+    .know-more-answers {
         flex-direction: column;
         gap: 10px;
-        border-radius: 20px;;
+        border-radius: 20px;
+        ;
 
     }
 
-    .answer-div-main{
+    .answer-div-main {
         color: white;
         padding: 10px 20px;
         text-align: center;
         height: 100%;
         width: 100%;
     }
-    .total-orders-section{
+
+    .total-orders-section {
         flex-direction: column;
         height: 100%;
         width: 100%;
         gap: 20px;
         padding: 20px 10px;
-        border-bottom: 1px solid white ;
+        border-bottom: 1px solid white;
+    }
+
+    .know-more-section {
+        background-color: white;
+    }
+}
+
+@media screen and (max-width:388px) {
+    .postcode-input {
+        width: 250px;
     }
 }

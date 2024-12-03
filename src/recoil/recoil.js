@@ -19,3 +19,8 @@ export const sharedCart = atom({
   key: "sharedCart",
   default: false,
 });
+
+export const showModalCart = atom({
+  key: "showModalCart",
+  default: false,
+});

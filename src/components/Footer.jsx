@@ -91,14 +91,18 @@ function Footer() {
             </div>
             <div className="footer-right-blocks">
               <span className="right-head">Legal Pages</span>
-              {LegalPages.map((e,index) => (
-                <span key={index} className="right-pages-name">{e.name}</span>
+              {LegalPages.map((e, index) => (
+                <span key={index} className="right-pages-name">
+                  {e.name}
+                </span>
               ))}
             </div>
             <div className="footer-right-blocks">
               <span className="right-head">Important Links</span>
-              {ImportantLinks.map((e,index) => (
-                <span key={index} className="right-pages-name">{e.name}</span>
+              {ImportantLinks.map((e, index) => (
+                <span key={index} className="right-pages-name">
+                  {e.name}
+                </span>
               ))}
             </div>
           </div>

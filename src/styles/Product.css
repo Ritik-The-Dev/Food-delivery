@@ -648,9 +648,11 @@
 
 .reviews-section {
     margin-top: 20px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
     align-items: start;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
 }
 
@@ -729,4 +731,344 @@
     align-items: start;
     flex-direction: column;
     gap: 20px;
+}
+
+.res-banner-left-div {
+    display: none;
+}
+
+.down-location-res {
+    display: none;
+}
+
+.Popular-sections-res {
+    display: none;
+}
+
+@media screen and (max-width:1650px) {
+    .product-page-banner {
+        width: 98%;
+    }
+
+    .card-product-manager {
+        width: 98%;
+    }
+
+    .location-background {
+        width: 98%;
+    }
+
+    .Popular-sections {
+        width: 98%;
+    }
+
+    .timing-div-info {
+        width: 98%;
+    }
+
+    .banner-inner-marquee {
+        width: 98%;
+    }
+
+    .search-div {
+        width: 98%;
+    }
+
+    .timing-div {
+        width: 98%;
+    }
+
+    .product-review-section-inner {
+        width: 98%;
+    }
+
+    .product-review-section {
+        height: 100%;
+        padding: 20px 10px;
+    }
+}
+
+@media screen and (max-width:1430px) {
+    .discount-sections {
+        display: none;
+    }
+}
+
+@media screen and (max-width:1250px) {
+    .product-page-banner {
+        height: 100%;
+    }
+
+    .upper-location-res {
+        display: none;
+    }
+
+    .down-location-res {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Popular-sections {
+        display: none;
+    }
+
+    .Popular-sections-res {
+        width: 95%;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        gap: 20px;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .Popular-cards-div-res {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        place-items: center;
+        width: 100%;
+    }
+
+    .popular-comp-details {
+        display: flex;
+        background-color: #FC8A06;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        width: 182px;
+
+    }
+
+    .timing-div-info {
+        display: none;
+    }
+
+    .product-banner-background {
+        flex-direction: column;
+        height: 100%;
+        padding: 20px;
+    }
+
+    .product-banner-left-div {
+        display: none;
+    }
+
+    .Popular-tagline {
+        font-size: 24px !important;
+        padding: 0px 20px;
+    }
+
+    .res-banner-left-div {
+        padding: 20px 10px;
+        display: flex;
+    }
+
+    .product-banner-right-div {
+        padding: 10px;
+        width: 50%;
+        align-items: start;
+        justify-content: start;
+    }
+
+    .res-banner-left-div {
+        width: 50%;
+        margin-top: 10px;
+    }
+
+    .popular-card-comps {
+        width: 182px;
+        height: 207px;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .popular-comp-imgs {
+        width: 182px;
+        height: 157px;
+        object-fit: cover;
+    }
+
+    .timing-div {
+        display: none;
+    }
+
+    .product-banner-left-btns {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .product-banner-right-img0 {
+        left: 30%;
+        top: 40%;
+    }
+
+    .banner-inner-marquee {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 25px;
+        padding: 0px 20px;
+    }
+
+    .banner-marquee-span {
+        flex-shrink: 0;
+    }
+
+    .product-section {
+        padding: 0px 20px;
+    }
+
+}
+
+@media screen and (max-width:900px) {
+    .res-banner-left-div {
+        width: 100%;
+    }
+
+    .product-banner-left-headline {
+        font-size: 30px;
+    }
+
+    .location-inner-div {
+        align-items: end;
+    }
+
+    .location-background {
+        align-items: end;
+
+    }
+
+    .review-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .location-background {
+        height: 522px;
+    }
+
+    .review-btn img {
+        width: 16.74px;
+        height: 16.74px;
+    }
+
+    .review-section-span-name {
+        font-size: 24px;
+    }
+
+    .location-inner-right {
+        display: none;
+    }
+
+    .both-comp {
+        display: none;
+    }
+
+    .web-res {
+        display: none;
+    }
+
+    .product-banner-right-div {
+        width: 100%;
+    }
+
+    .location-inner-left {
+        height: 322px;
+    }
+
+    .location-inner-left-inner {
+        gap: 10px;
+    }
+
+    .location-inner-outlet {
+        font-size: 32px;
+    }
+
+    .location-inner-name {
+        font-size: 22px;
+    }
+
+    .location-inner-normal {
+        font-size: 18px;
+    }
+
+    .location-inner-colored {
+        font-size: 18px;
+    }
+
+    .location-inner-adress {
+        font-size: 18px;
+    }
+
+    .product-banner-right-img0 {
+        left: 10%;
+    }
+
+    .search-div {
+        display: none;
+    }
+
+    .card-product-manager {
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:410px) {
+    .Popular-cards-div-res {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.modal-overlays {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px 0px;
+}
+
+.modal-contents {
+    background: white;
+    border-radius: 8px;
+    width: 800px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%;
+    height: 100%;
+}
+
+.both-comps {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+@media screen and (max-width:450px) {
+    .share-cart-component {
+        width: 100%;
+    }
+    .share-cart-img{
+        display: none;
+    }
 }

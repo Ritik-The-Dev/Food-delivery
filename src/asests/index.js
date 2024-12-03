@@ -70,8 +70,10 @@ import card from "./card.png";
 import share from "./share.png";
 import edit from "./edit.png";
 import navbar from "./navbar.png";
+import plus from "./plus.png";
 
 export const Images = {
+  plus,
   edit,
   navbar,
   share,

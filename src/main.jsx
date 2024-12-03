@@ -11,7 +11,31 @@ createRoot(document.getElementById("root")).render(
     <RecoilRoot>
       <Router>
         <App />
-        <Toaster />
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            success: {
+              icon: false,
+              style: {
+                fontFamily: "Poppins",
+                background: "#28a745",
+                color: "#fff",
+                padding: "12px 20px",
+                borderRadius: "6px",
+              },
+            },
+            error: {
+              icon: false,
+              style: {
+                fontFamily: "Poppins",
+                background: "#dc3545",
+                color: "#fff",
+                padding: "12px 20px",
+                borderRadius: "6px",
+              },
+            },
+          }}
+        />
       </Router>
     </RecoilRoot>
   </StrictMode>

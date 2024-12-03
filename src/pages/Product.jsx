@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Images } from "../asests";
 import DealsCard from "../components/DealsCard";
@@ -8,11 +8,21 @@ import ProductsCard from "../components/ProductsCard";
 import ReviewCard from "../components/ReviewCard";
 import CartComponent from "../components/CartComponent";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { CartItems, restaurants, sharedCart, userData } from "../recoil/recoil";
+import {
+  CartItems,
+  restaurants,
+  sharedCart,
+  showModalCart,
+  userData,
+} from "../recoil/recoil";
 import toast from "react-hot-toast";
 import Loader from "../components/Loader";
 
 function Product() {
+  const sectionRefs = useRef([]);
+  const cartRef = useRef(null);
+  const productsRef = useRef(null);
+  const [ShowModalCart, setShowModalCart] = useRecoilState(showModalCart);
   const { id } = useParams();
   const navigate = useNavigate();
   const Restaurants = useRecoilValue(restaurants);
@@ -196,10 +206,13 @@ function Product() {
     __v: 0,
   });
   const [CategoryWithProducts, setCategoryWithProducts] = useState([]);
+  const [searchText, setSearchText] = useState("");
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCartItems] = useRecoilState(CartItems);
   const [sharedItem, setSharedItem] = useRecoilState(sharedCart);
   const [sharedLoading, setSharedLoading] = useState(false);
+  const [currentSection, setCurrenSection] = useState("Burgers");
+  const [filteredItem, setFilteredItems] = useState([]);
 
   const exclusiveDeals = [
     {
@@ -319,6 +332,12 @@ function Product() {
         const parsedCartItems = JSON.parse(decodeURIComponent(cartItemsParam));
         if (parsedCartItems.length) {
           setShowCart(true);
+          if (cartRef.current) {
+            cartRef.current.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
         } else {
           setShowCart(cartState);
         }
@@ -354,6 +373,7 @@ function Product() {
           }
         });
         setCategoryWithProducts(AllCategoryWithProduct);
+        setFilteredItems(AllCategoryWithProduct);
       }
     }
   }, [id, Restaurants]);
@@ -387,6 +407,40 @@ function Product() {
       toast.error("No items in your cart to share.");
     }
   };
+
+  const handleScrollToSection = (categoryName) => {
+    const sectionIndex = CategoryWithProducts.findIndex(
+      (category) => category.name === categoryName
+    );
+    if (sectionIndex !== -1 && sectionRefs.current[sectionIndex]) {
+      sectionRefs.current[sectionIndex].scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  const filterCategories = (searchText) => {
+    const filteredData = CategoryWithProducts.filter((category) =>
+      category.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredItems(filteredData);
+  };
+
+  const goToProduct = () => {
+    if (productsRef.current) {
+      productsRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (CategoryWithProducts.length && searchText) {
+      filterCategories(searchText);
+    }
+  }, [searchText]);
 
   return (
     <div className="product-main-div">
@@ -431,6 +485,26 @@ function Product() {
                 alt="product-banner-right-img-1"
               />
             </div>
+            <div className="product-banner-left-div res-banner-left-div ">
+              <span className="product-banner-left-title">I'm lovin' it!</span>
+              <span className="product-banner-left-headline">
+                {RestaurantData.name}
+              </span>
+              <div className="product-banner-left-btns">
+                <button className="product-banner-left-btns1">
+                  <img src={Images.minimum} className="minimum-btn" />
+                  <span className="minimum-span-tag">
+                    Minimum Order: 12 GBP
+                  </span>
+                </button>
+                <button className="product-banner-left-btns1">
+                  <img src={Images.delivery} className="minimum-btn" />
+                  <span className="minimum-span-tag">
+                    Delivery in 20-25 Minutes
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         {/* Timing Div */}
@@ -446,8 +520,20 @@ function Product() {
             All Offers from {RestaurantData.name}
           </span>
           <div className="search-input-div">
-            <img src={Images.search} alt="Search" className="search-img" />
+            <img
+              src={Images.search}
+              alt="Search"
+              className="search-img"
+              onClick={goToProduct}
+            />
             <input
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  goToProduct();
+                }
+              }}
               type="text"
               className="search-input"
               placeholder="Search from menu..."
@@ -459,10 +545,19 @@ function Product() {
           <div className="banner-inner-marquee">
             {RestaurantData.categories.map((e, index) => (
               <span
+                onClick={() => {
+                  if (e.foodItems.length) {
+                    setCurrenSection(e.name);
+                    handleScrollToSection(e.name);
+                  }
+                }}
                 className={`banner-marquee-span ${
-                  index === 0 ? "banner-marquee-span-active" : ""
+                  currentSection === e.name ? "banner-marquee-span-active" : ""
                 }`}
                 key={index}
+                style={{
+                  opacity: !e.foodItems.length ? 0.7 : 1,
+                }}
               >
                 {e.name}
               </span>
@@ -494,9 +589,14 @@ function Product() {
               ))}
             </div>
             {/* Products Section */}
-            {CategoryWithProducts.map((e, index) => (
-              <div className="product-section" key={e._id}>
+            {filteredItem.map((e, index) => (
+              <div
+                className="product-section"
+                ref={(el) => (sectionRefs.current[index] = el)}
+                key={e._id}
+              >
                 <span
+                  ref={index === 0 ? productsRef : null}
                   className={`${
                     index === 0 ? "product-title" : "product-colored-title"
                   }`}
@@ -507,9 +607,17 @@ function Product() {
                   className="products-grid"
                   style={{
                     gridTemplateColumns:
-                      showCart && showCart != "false"
-                        ? `repeat(2, 1fr)`
-                        : `repeat(3, 1fr)`,
+                      window.innerWidth > 1560
+                        ? showCart && showCart != "false"
+                          ? `repeat(2, 1fr)`
+                          : `repeat(3, 1fr)`
+                        : window.innerWidth > 900
+                        ? showCart && showCart != "false"
+                          ? `repeat(1, 1fr)`
+                          : `repeat(2, 1fr)`
+                        : window.innerWidth < 900
+                        ? `repeat(1, 1fr)`
+                        : "",
                   }}
                 >
                   {e.foodItems.map((e) => (
@@ -528,7 +636,7 @@ function Product() {
             ))}
           </div>
           {showCart && showCart != "false" ? (
-            <div className="both-comp">
+            <div className="both-comp" ref={cartRef}>
               <div className="share-cart-component">
                 <div className="share-cart-left">
                   <img className="share-cart-img" src={Images.share} />
@@ -600,15 +708,34 @@ function Product() {
           </div>
         </div>
         {/* Location Div */}
-        <div className="location-div-comp">
+        <div className="location-div-comp upper-location-res">
           <div
             className="location-background"
             style={{
+              position: "relative",
               backgroundImage: `url(${Images.map})`,
             }}
           >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d877481.1487000826!2d74.83031757812498!3d30.7841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39107484bbb101a9%3A0x2177d3601c02d1d1!2sMcDonald&#39;s!5e0!3m2!1sen!2sin!4v1733221475570!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{
+                border: "0",
+                position: "absolute",
+                top: "0",
+                left: "0",
+              }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
             <div className="location-inner-div">
-              <div className="location-inner-left">
+              <div
+                className="location-inner-left"
+                style={{
+                  zIndex: "10",
+                }}
+              >
                 <div className="location-inner-left-inner">
                   <span className="location-inner-outlet">McDonald’s</span>
                   <span className="location-inner-name">South London</span>
@@ -617,8 +744,8 @@ function Product() {
                   </span>
                   <span className="location-inner-normal">Phone number</span>
                   <span className="location-inner-colored">+934443-43</span>
-                  <span className="location-inner-normal">Website</span>
-                  <span className="location-inner-colored">
+                  <span className="location-inner-normal web-res">Website</span>
+                  <span className="location-inner-colored web-res">
                     http://mcdonalds.uk/
                   </span>
                 </div>
@@ -635,6 +762,23 @@ function Product() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="Popular-sections-res">
+          <span className="Popular-tagline">Similar Restaurants</span>
+          <div className="Popular-cards-div-res">
+            {Restaurants.map((e) => (
+              <div className={`popular-card-comps`}>
+                <img
+                  src={e.logo}
+                  alt="popular-img"
+                  className="popular-comp-imgs"
+                />
+                <div className={` popular-comp-details`}>
+                  <span className="popular-comp-type">{e.name}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
         {/* Reviews Section */}
@@ -684,7 +828,101 @@ function Product() {
             ))}
           </div>
         </div>
+        {/* Location Div */}
+        <div className="location-div-comp down-location-res">
+          <div
+            className="location-background"
+            style={{
+              position: "relative",
+              backgroundImage: `url(${Images.map})`,
+            }}
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d877481.1487000826!2d74.83031757812498!3d30.7841!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39107484bbb101a9%3A0x2177d3601c02d1d1!2sMcDonald&#39;s!5e0!3m2!1sen!2sin!4v1733221475570!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{
+                border: "0",
+                position: "absolute",
+                top: "0",
+                left: "0",
+              }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <div className="location-inner-div">
+              <div
+                className="location-inner-left"
+                style={{
+                  zIndex: "10",
+                }}
+              >
+                <div className="location-inner-left-inner">
+                  <span className="location-inner-outlet">McDonald’s</span>
+                  <span className="location-inner-name">South London</span>
+                  <span className="location-inner-adress">
+                    Tooley St, London Bridge, London SE1 2TF, United Kingdom
+                  </span>
+                  <span className="location-inner-normal">Phone number</span>
+                  <span className="location-inner-colored">+934443-43</span>
+                  <span className="location-inner-normal web-res">Website</span>
+                  <span className="location-inner-colored web-res">
+                    http://mcdonalds.uk/
+                  </span>
+                </div>
+              </div>
+              <div className="location-inner-right">
+                <span className="location-right-oulet-div">
+                  McDonald’s
+                  <span className="location-right-small-span">
+                    South London
+                  </span>
+                </span>
+                <div className="location-pin-div">
+                  <img src={Images.mapPin} className="map-pin-img" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      {showCart &&
+      showCart != "false" &&
+      ShowModalCart &&
+      window.innerWidth < 900 ? (
+        <div
+          className="modal-overlays"
+          onClick={(e) => {
+            if (!e.target.closest(".modal-contents")) {
+              setShowCart(false);
+              setShowModalCart(false);
+            }
+          }}
+        >
+          <div className="modal-contents">
+            <div className="both-comps" ref={cartRef}>
+              <div className="share-cart-component">
+                <div className="share-cart-left">
+                  <img className="share-cart-img" src={Images.share} />
+                  <span className="share-cart-text">
+                    Share this cart with your friends
+                  </span>
+                </div>
+                <div className="share-cart-right">
+                  <button className="share-cart-btn" onClick={copyShareLink}>
+                    Copy Link
+                  </button>
+                </div>
+              </div>
+              <CartComponent
+                shared={sharedItem}
+                ReloadLocalItems={ReloadLocalItems}
+                cartItems={cartItems}
+              />
+            </div>
+          </div>
+        </div>
+      ) : undefined}
       {sharedLoading ? <Loader text="Getting Shared Card Items" /> : undefined}
     </div>
   );

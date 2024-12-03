@@ -1,4 +1,5 @@
-const HOST = `https://food-api-cuvette.vercel.app`;
+// const HOST = `https://food-api-cuvette.vercel.app`;
+const HOST = `http://localhost:999`;
 
 export const REGISTER_API = `${HOST}/api/v1/register`;
 export const LOGIN_API = `${HOST}/api/v1/login`;
@@ -8,5 +9,9 @@ export const ADD_TO_CART = `${HOST}/api/v1/addToCart`;
 export const DELETE_FROM_CART = `${HOST}/api/v1/deleteCart`;
 export const PLACE_ORDER = `${HOST}/api/v1/create-order`;
 export const EDIT_PROFILE = `${HOST}/api/v1/edit-profile`;
-export const SEND_OTP = `${HOST}/api/v1/send-otp`;
-export const FORGOT_PASSWORD = `${HOST}/api/v1/forget-password`;
+export const ADD_CARD = `${HOST}/api/v1/add-card`;
+export const EDIT_CARD = `${HOST}/api/v1/edit-card`;
+export const DELETE_CARD = `${HOST}/api/v1/delete-card`;
+export const ADD_ADRESS = `${HOST}/api/v1/add-address`;
+export const EDIT_ADRESS = `${HOST}/api/v1/edit-address`;
+export const DELETE_ADRESS = `${HOST}/api/v1/delete-address`;

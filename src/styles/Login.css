@@ -44,6 +44,7 @@
     font-size: 36px;
     font-weight: 600;
     text-align: start;
+    /* text-wrap: nowrap; */
 }
 
 .login-quote {
@@ -130,4 +131,22 @@
     object-fit: cover;
     height: 80vh;
     border-radius: 20px;
+}
+
+@media screen and (max-width:1200px) {
+    .login-right-div {
+        display: none;
+    }
+
+    .login-left-div {
+        width: 100%;
+    }
+
+    .login-input {
+        width: 100%;
+    }
+
+    .main-login {
+        margin-bottom: 40px;
+    }
 }

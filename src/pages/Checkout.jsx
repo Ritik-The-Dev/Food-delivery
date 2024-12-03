@@ -8,6 +8,7 @@ import { CartItems, restaurants, userData } from "../recoil/recoil";
 import { getCartItemwithDetails } from "../components/CartComponent";
 import toast from "react-hot-toast";
 import Payment from "./Payment";
+import Address from "./Address";
 
 function Checkout() {
   const cartItems = useRecoilValue(CartItems);
@@ -18,6 +19,10 @@ function Checkout() {
   const navigate = useNavigate();
   const [subTotal, setSubTotal] = useState(0);
   const [orderItems, setOrderItems] = useState([]);
+  const [currentAddress, setCurrentAdress] = useState(
+    (UserData?.address?.length && UserData.address[0]?.fulladdress) ||
+      "No Address Found"
+  );
 
   const SimilarRestraunts = [
     {
@@ -56,7 +61,7 @@ function Checkout() {
     if (cartItems) {
       const data = getCartItemwithDetails(cartItems, Restraunts);
       if (!data.length) {
-        navigate("/restaurants");
+        navigate("/restaurants/674d7208a54b5e7e77c0c157?cart=true");
         toast.error("No Items in your cart");
       }
       setOrderItems(data);
@@ -65,9 +70,11 @@ function Checkout() {
       setSubTotal(total);
     } else {
       if (UserData._id) {
+        UserData?.address?.length &&
+          setCurrentAdress(UserData.address[0]?.fulladdress);
         const data = getCartItemwithDetails(UserData.cart, Restraunts);
         if (!data.length) {
-          navigate("/restaurants");
+          navigate("/restaurants/674d7208a54b5e7e77c0c157?cart=true");
           toast.error("No Items in your cart");
         }
         setOrderItems(data);
@@ -80,7 +87,7 @@ function Checkout() {
           const cart = JSON.parse(cartItems);
           const data = getCartItemwithDetails(cart, Restraunts);
           if (!data.length) {
-            navigate("/restaurants");
+            navigate("/restaurants/674d7208a54b5e7e77c0c157?cart=true");
             toast.error("No Items in your cart");
           }
           setOrderItems(data);
@@ -99,7 +106,9 @@ function Checkout() {
           <img
             src={Images.leftarrow}
             className="left-arrow-order-details"
-            onClick={() => navigate("/restaurants/674d7208a54b5e7e77c0c157?cart=true")}
+            onClick={() =>
+              navigate("/restaurants/674d7208a54b5e7e77c0c157?cart=true")
+            }
           />
           <span>Your Order Details</span>
         </div>
@@ -139,7 +148,10 @@ function Checkout() {
             </div>
           </div>
           <div className="order-price-div">
-            <div className="checkout-address">
+            <div
+              className="checkout-address"
+              onClick={() => setCurrentPage("my-address")}
+            >
               <div className="checkout-adress-left">
                 <div className="order-pin">
                   <img src={Images.pin} className="checkout-order-map-pin" />
@@ -149,11 +161,9 @@ function Checkout() {
                     Delivery Address
                   </span>
                   <span className="checkout-adress-main">
-                    {UserData && UserData._id
-                      ? UserData.address.length > 22
-                        ? `${UserData.address.slice(0, 22)}...`
-                        : UserData.address
-                      : "Kawungcarang road no 28..."}
+                    {currentAddress > 22
+                      ? `${currentAddress.slice(0, 22)}...`
+                      : currentAddress}
                   </span>
                 </div>
               </div>
@@ -178,7 +188,9 @@ function Checkout() {
             <button
               onClick={() =>
                 token
-                  ? setCurrentPage("payment")
+                  ? currentAddress === "No Address Found"
+                    ? toast.error("Pls Add a Address to Continue")
+                    : setCurrentPage("payment")
                   : (toast.error("Login to continue"), navigate("/login"))
               }
               className="choose-payment-btn"
@@ -187,7 +199,7 @@ function Checkout() {
             </button>
           </div>
         </div>
-        <div className="Popular-section">
+        <div className="Popular-section asas">
           <span className="Popular-tagline">Similar Restaurants</span>
           <div className="Popular-cards-div">
             {SimilarRestraunts.map((e) => (
@@ -197,6 +209,11 @@ function Checkout() {
         </div>
       </div>
     </div>
+  ) : currentPage === "my-address" ? (
+    <Address
+      setCurrentAdress={setCurrentAdress}
+      setCurrentPage={setCurrentPage}
+    />
   ) : (
     <Payment
       orderItems={orderItems}

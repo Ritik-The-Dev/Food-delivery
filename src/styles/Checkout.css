@@ -14,6 +14,15 @@
     flex-direction: column;
 }
 
+.adress-inner-div {
+    width: 80%;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
 .title-checkout {
     display: flex;
     align-items: center;
@@ -143,6 +152,7 @@
     justify-content: space-between;
     padding: 0px 20px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .checkout-adress-left {
@@ -253,4 +263,343 @@
     font-weight: 600;
     border: none;
     margin-top: 10px;
+}
+
+.address-main-div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+    min-height: 300px;
+    height: 100%;
+}
+
+.addres-data-div {
+    width: 265px;
+    height: 100%;
+    max-height: 210px;
+    overflow: hidden;
+    padding: 66px;
+    border-radius: 12px;
+    border: 1px solid #AFAFAF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-address-div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+
+}
+
+.addres-data-div-main {
+    width: 265px;
+    height: 210px;
+    max-height: 210px;
+    overflow: hidden;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid #AFAFAF;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.add-address-div img {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+}
+
+.dott {
+    border: dotted;
+    cursor: pointer;
+}
+
+.rounded-color {
+    width: 50.22px;
+    height: 50.22px;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: #FC8A06;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.address-top {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    height: 50%;
+    cursor: pointer;
+}
+
+.address-inner-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    width: 240px;
+
+}
+
+.default-address {
+    background-color: #FFEDD8;
+    width: Fixed (69px)px;
+    height: Hug (22px)px;
+    padding: 4px 6px 4px 6px;
+    border-radius: 100px;
+    font-family: Poppins;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    color: #FC8A06;
+}
+
+.address-city {
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 600;
+    color: #03081F;
+}
+
+.full-address {
+    width: 100%;
+    flex-wrap: wrap;
+    word-break: break-all;
+}
+
+.address-bottom {
+    display: flex;
+    gap: 20px;
+}
+
+.address-bottom button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    color: #FC8A06;
+    cursor: pointer;
+}
+
+.Edit-adress-btn {
+    border-right: 1px solid #AFAFAF !important;
+    display: flex;
+    padding: 0px 20px;
+}
+
+.modal-content-address {
+    background-color: white;
+    padding: 20px 20px;
+    border-radius: 12px;
+    gap: 20px;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    z-index: 20;
+}
+
+.Add-address {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    gap: 10px;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-gray-90, #3F3F3F);
+}
+
+.Adress-data-form {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-add-adress input {
+    width: Fill (248px)px;
+    height: Fixed (48px)px;
+    padding: 12px 16px 12px 16px;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-gray-70, #7E7E7E);
+    border-radius: 12px;
+    border: 1px solid #C5C5C580
+}
+
+.input-add-adress {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.add-fulladdres {
+    min-width: 100%;
+    width: 100%;
+    min-height: 158px;
+    max-height: 158px;
+    height: Fill (158px)px;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-gray-70, #7E7E7E);
+    border: 1px solid #C5C5C580
+}
+
+.address-actions-div {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+}
+
+
+@media screen and (max-width:1850px) {
+    .checkout-inner-div {
+        width: 95%;
+    }
+
+    .asas {
+        display: none;
+    }
+
+    .checkout-outer-div {
+        margin-bottom: 40px;
+    }
+
+    .order-items-div {
+        width: 50%;
+    }
+
+    .order-price-div {
+        width: 50%;
+    }
+
+    .checkout-address {
+        width: 100%;
+    }
+
+    .checkout-total-prices {
+        width: 100%;
+    }
+
+    .items-price-span {
+        width: 100%;
+    }
+
+    .subtotal-price-span {
+        width: 100%;
+    }
+
+    .checkout-upper-div {
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width:1100px) {
+    .address-main-div {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:700px) {
+    .address-main-div {
+        grid-template-columns: repeat(1, 1fr);
+        place-items: center;
+        width: 100%;
+    }
+
+    .title-checkout {
+        font-size: 20px;
+    }
+
+    .adress-inner-div {
+        width: 98%;
+    }
+
+    .dott {
+        height: 50px !important;
+        width: 100%;
+        padding: 0px;
+    }
+
+    .address-inner-head {
+        width: 100%;
+    }
+
+    .address-top {
+        width: 100%;
+    }
+
+    .addres-data-div-main {
+        width: 100%;
+    }
+
+    .rounded-color {
+        width: 27px;
+        height: 27px;
+    }
+
+    .rounded-color img {
+        width: 12.9px;
+        height: 12.9px;
+    }
+
+    .add-address-div {
+        flex-direction: row;
+        gap: 10px;
+        height: 50px;
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .input-add-adress {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        width: 100%;
+    }
+
+    .checkout-upper-div {
+        flex-direction: column;
+        height: 100%;
+        align-items: center;
+        width: 100%;
+    }
+
+    .input-add-adress input {
+        width: 250px;
+    }
+
+    .order-price-div {
+        width: 100%;
+    }
+
+    .order-items-div {
+        width: 100%;
+    }
+
+    .order-price-div {
+        align-items: center;
+    }
+
+    .checkout-order-imgdescdiv {
+        width: 90%;
+    }
 }

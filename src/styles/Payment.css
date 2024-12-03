@@ -74,6 +74,7 @@
     align-items: start;
     justify-content: space-between;
     width: 536px;
+    overflow: hidden;
 }
 
 .payment-address {
@@ -278,9 +279,10 @@
     gap: 10px;
 }
 
-.order-confirmed-items-span{
+.order-confirmed-items-span {
     height: 21px;
 }
+
 .backtohome {
     width: 311px;
     height: 39px;
@@ -294,4 +296,73 @@
     outline: none;
     border: none;
     cursor: pointer;
+}
+
+@media screen and (max-width:1400px) {
+    .payment-inner-div {
+        width: 98%;
+    }
+}
+
+@media screen and (max-width:1850px) {
+    .payment-items-div {
+        width: 50%;
+    }
+
+    .payment-price-div {
+        width: 50%;
+        align-items: center;
+    }
+
+    .subtotal-payment-price-span {
+        width: 100%;
+    }
+
+    .choose-payment-btns {
+        width: 500px;
+    }
+}
+
+@media screen and (max-width:1100px) {
+    .payment-items-div {
+        width: 100%;
+    }
+
+    .payment-upper-div {
+        flex-direction: column;
+    }
+
+    .payment-upper-div {
+        height: 80vh;
+        justify-content: space-between;
+    }
+
+    .payment-price-div {
+        width: 100%;
+        align-items: center;
+    }
+
+    .payment-total-prices {
+        width: 100%;
+        align-items: center;
+        border: 0px;
+        border-top: 1px solid #AFAFAF;
+        border-radius: 0px;
+    }
+
+    .subtotal-payment-price-span {
+        border: 0px;
+    }
+}
+
+@media screen and (max-width:350px) {
+    .order-confirmed-items {
+        width: 100%;
+    }
+    .backtohome{
+        width: 100%;
+    }
+    .payment-completed-div{
+        padding: 0px 10px;
+    }
 }

@@ -45,6 +45,7 @@
     width: 93.61px;
     height: 93.61px;
     border-radius: 100%;
+    object-fit: cover;
 }
 
 .edit-btn-profile {
@@ -110,17 +111,17 @@
 }
 
 .saved-cards-div {
+    font-size: 24px;
     width: 100%;
     border-top: 1px solid #000000;
     padding: 20px 0px;
     font-family: Poppins;
-    font-size: 24px;
     font-weight: 500;
 }
 
 .saved-cards {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
+    display: grid;
     width: 100%;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -128,13 +129,14 @@
 }
 
 .saved-card-comp {
+    cursor: pointer;
     width: 312px;
     height: 74.22px;
     border-radius: 12px;
     border: 0.5px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 0px 10px;
     border: 0.5px solid #00000080;
 }
@@ -175,4 +177,218 @@
     width: 15.78px;
     height: 15.78px;
     cursor: pointer;
+}
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 10px 20px;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    width: 800px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.close-img {
+    display: none;
+}
+
+.modal-inner-content {
+    padding: 20px;
+    width: 100%;
+}
+
+.modal-content h2 {
+    font-size: 40px;
+    font-family: Poppins;
+    font-weight: 600;
+}
+
+.payment-form {
+    display: flex;
+    align-items: start;
+    padding: 10px 0px;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.form-group {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-family: Poppins;
+    font-weight: 400;
+}
+
+.form-group input {
+    padding: 0px 20px;
+    height: 64px;
+    border-radius: 7.49px;
+    border: 2px solid #AFAFAF;
+    width: 70%;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.modal-actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+    height: 138px;
+    background-color: #FC8A06;
+}
+
+.btn-remove {
+    padding: 0px 30px;
+    height: 80px;
+    border-radius: 12px;
+    background-color: #663700;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    border: none;
+    background: transparent;
+    color: white;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    padding: 0px 10px;
+    border-radius: 120px;
+    cursor: pointer;
+}
+
+.right-btn-modals {
+    gap: 20px;
+    display: flex;
+}
+
+.btn-save {
+    padding: 0px 20px;
+    font-family: Poppins;
+    border: none;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    height: 80px;
+    background-color: white;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+@media screen and (max-width:1300px) {
+    .saved-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:800px) {
+    .img-name-div {
+        visibility: hidden;
+        display: none;
+    }
+
+    .modal-content h2 {
+        font-size: 20px;
+    }
+
+    .form-group {
+        font-size: 16px;
+    }
+
+    .form-group input {
+        width: Fill (221px)px;
+        height: Fixed (48px)px;
+        background: #F9F9F9;
+        border: 0.5px solid #AFAFAF
+    }
+
+    .input-value {
+        width: 100%;
+    }
+
+    .title-payment {
+        margin-bottom: 10px;
+    }
+
+    .saved-cards-div {
+        font-size: 16px;
+    }
+
+    .saved-cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .saved-card-comp {
+        width: 100%
+    }
+
+    .img-name-edit-div {
+        align-items: end;
+        width: 100%;
+        justify-content: end;
+    }
+
+    .details-edit-div {
+        margin-top: 0;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .modal-actions {
+        background-color: transparent;
+    }
+
+    .btn-cancel {
+        display: none;
+    }
+
+    .btn-remove {
+        font-size: 16px;
+    }
+
+    .btn-save {
+        background-color: #FC8A06;
+        color: white;
+        font-size: 16px;
+    }
+
+    .title-modal-payment-cards {
+        display: flex;
+        align-items: start;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .close-img {
+        display: flex;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
 }

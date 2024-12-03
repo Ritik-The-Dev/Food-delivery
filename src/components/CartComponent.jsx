@@ -7,6 +7,7 @@ import { CartItems, restaurants, sharedCart, userData } from "../recoil/recoil";
 import { DELETE_FROM_CART } from "../api";
 import toast from "react-hot-toast";
 import axios from "axios";
+import Loader from './Loader'
 
 export const getCartItemwithDetails = (cartItems, restaurantData) => {
   const cartItemMap = new Map(cartItems.map((e) => [e.foodItemId, e.quantity]));
@@ -218,6 +219,7 @@ function CartComponent({ cartItems, ReloadLocalItems, shared }) {
         <img src={Images.arrowwhite} className="checkout-btn-img" />
         <span className="checkout-btn-span">Checkout!</span>
       </button>
+      {loading && <Loader text={"Deleting Item from Cart"}/>}
     </div>
   );
 }

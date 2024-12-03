@@ -9,7 +9,7 @@
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
-    z-index: 50;
+    z-index: 1000;
     font-family: Poppins;
     color: white;
     overflow: hidden;

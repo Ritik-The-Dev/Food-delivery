@@ -7,6 +7,7 @@ import { PLACE_ORDER } from "../api";
 import toast from "react-hot-toast";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { sharedCart, userData } from "../recoil/recoil";
+import Loader from "../components/Loader";
 
 function Payment({ setCurrentPage, orderItems, subTotal }) {
   const [UserData, setUserData] = useRecoilState(userData);
@@ -200,6 +201,7 @@ function Payment({ setCurrentPage, orderItems, subTotal }) {
           </div>
         </div>
       )}
+      {loading && <Loader text={"Placing your order..."} />}
     </div>
   );
 }

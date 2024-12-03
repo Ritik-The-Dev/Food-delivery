@@ -7,6 +7,7 @@ import { ADD_TO_CART } from "../api";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import Loader from "./Loader";
 
 function ProductsCard({ _id: id, title, desc, price, img, ReloadLocalItems }) {
   const [loading, setLoading] = useState(false);
@@ -118,6 +119,7 @@ function ProductsCard({ _id: id, title, desc, price, img, ReloadLocalItems }) {
           <img src={Images.add} alt="Add to cart" className="add-btn" />
         </div>
       </div>
+      {loading && <Loader text={"Adding Item to  Cart"}/>}
     </div>
   );
 }

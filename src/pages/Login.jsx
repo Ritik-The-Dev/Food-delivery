@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import "../styles/Login.css";
 import { LOGIN_API } from "../api";
+import Loader from "../components/Loader";
 
 function Login() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ function Login() {
         toast.success(data.message);
         localStorage.setItem("token", data.token);
         navigate("/");
-        window.location.reload()
+        window.location.reload();
       } else {
         toast.error(data.error || "Invalid login credentials");
       }
@@ -116,6 +117,7 @@ function Login() {
           />
         </div>
       </div>
+      {loading && <Loader text={"Signing in..."} />}
     </div>
   );
 }

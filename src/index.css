@@ -6,3 +6,7 @@
     scrollbar-width: thin;
     scrollbar-color: transparent;
 }
+
+input{
+    outline: none !important;
+}

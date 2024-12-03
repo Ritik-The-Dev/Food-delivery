@@ -1,0 +1,12 @@
+{
+  "routes": [
+    { "src": "/", "dest": "/" },
+    { "src": "/login", "dest": "/" },
+    { "src": "/register", "dest": "/" },
+    { "src": "/checkout", "dest": "/" },
+    { "src": "/restaurants", "dest": "/" },
+    { "src": "/restaurants/(.*)", "dest": "/" },
+    { "src": "/profile", "dest": "/" },
+    { "src": "/*", "dest": "/" }
+  ]
+}

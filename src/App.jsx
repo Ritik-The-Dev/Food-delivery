@@ -24,6 +24,7 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!restaurantsData || !restaurantsData.length) {
+      setLoading(true);
       axios
         .get(GET_MENU)
         .then(({ data }) => setRestrauntsData(data.restaurants))
@@ -35,6 +36,7 @@ function App() {
         });
     }
     if (!UserData._id && token) {
+      setLoading(true);
       axios
         .get(GET_USER_API, {
           headers: {
@@ -64,6 +66,9 @@ function App() {
         })
         .catch((err) => {
           console.log(`Error Getting User Data`, err);
+        })
+        .finally(() => {
+          setLoading(false);
         });
     }
   }, []);

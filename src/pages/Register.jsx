@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { Images } from "../asests";
 import "../styles/Login.css";
 import { REGISTER_API } from "../api";
+import Loader from "../components/Loader";
 
 function Register() {
   const navigate = useNavigate();
@@ -161,6 +162,7 @@ function Register() {
           />
         </div>
       </div>
+      {loading && <Loader text={"Registering User"} />}
     </div>
   );
 }
